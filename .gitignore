@@ -10,3 +10,8 @@
 *.out
 *.nav
 *.snm
+*.brf
+*.ilg
+*.ind
+*.lof
+*.lot
