@@ -7,7 +7,7 @@
 BASE_NAME = tese-exemplo
 
 LATEX     = latex
-PDFLATEX  = pdflatex
+PDFLATEX  = xelatex
 BIBTEX    = bibtex
 MAKEINDEX = makeindex
 

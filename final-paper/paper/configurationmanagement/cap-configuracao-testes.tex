@@ -1,6 +1,6 @@
 %% ------------------------------------------------------------------------- %%
-\chapter{Conceitos}
-\label{cap:conceitos}
+\chapter{Testes e gerÃªncia de configuraÃ§Ã£o}
+\label{cap:testeconfiguracao}
 
 Texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto texto texto texto texto texto texto texto
@@ -9,7 +9,7 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto.
 
 %% ------------------------------------------------------------------------- %%
-\section{Fundamentos}\index{área do trabalho!fundamentos}
+\section{Fundamentos}\index{?ea do trabalho!fundamentos}
 \label{sec:fundamentos}
 
 Texto texto texto texto texto texto texto texto texto texto texto texto texto
@@ -19,7 +19,7 @@ texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto.
 
 %% ------------------------------------------------------------------------- %%
-\subsection{Ácidos Nucléicos}\index{ácido!nucléico}\index{nucleotídeos}
+\subsection{?cidos Nucl?cos}\index{?ido!nucl?co}\index{nucleot?eos}
 \label{sec:acidos_nucleicos}
 
 Na Figura~\ref{fig:humanbeta} texto texto texto texto texto texto texto texto
@@ -31,12 +31,12 @@ texto texto texto.
 \begin{figure}[!h]
   \centering
   \includegraphics[width=.40\textwidth]{graph} 
-  \caption{Descrição da figura mostrada.}
+  \caption{Descri?o da figura mostrada.}
   \label{fig:humanbeta} 
 \end{figure}
 
 %% ------------------------------------------------------------------------- %%
-\subsection{Aminoácidos}\index{ácido!amino|(}
+\subsection{Amino?idos}\index{?ido!amino|(}
 \label{sec:amino_acidos}
 
 Veja na Tabela \ref{tab:amino_acidos}...  texto texto texto texto texto texto
@@ -49,18 +49,18 @@ texto texto texto texto texto texto texto texto texto texto texto.
 \begin{center}
     \begin{tabular}{c|c|l}
 	 \hline
-	 Código & Abreviatura & Nome completo \\ \hline
+	 C?igo & Abreviatura & Nome completo \\ \hline
      \texttt{A} & Ala & Alanina \\
-     \texttt{C} & Cys & Cisteína \\
+     \texttt{C} & Cys & Ciste?a \\
      ...        & ... & ... \\
      \texttt{W} & Trp & Tiptofano \\
      \texttt{Y} & Tyr & Tirosina \\ \hline
     \end{tabular}
-  \caption{Códigos, abreviaturas e nomes dos aminoácidos.}
+  \caption{C?igos, abreviaturas e nomes dos amino?idos.}
   \label{tab:amino_acidos}
 \end{center}
 \end{table}
-\index{ácido!amino|)}
+\index{?ido!amino|)}
 
 Texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto texto texto texto texto texto texto texto
@@ -70,46 +70,46 @@ texto texto texto texto texto texto texto.
 
 
 %% ------------------------------------------------------------------------- %%
-\section{Exemplo de Código-Fonte em Java}
+\section{Exemplo de C?igo-Fonte em Java}
 \label{sec:exemplo_codigo_fonte}
 Texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto texto texto texto texto texto texto texto
 texto texto texto texto texto texto texto.
 
-% Foi utilizado o pacote listing para formatar código fonte
+% Foi utilizado o pacote listing para formatar c?igo fonte
 % http://ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf
-% Veja no preambulo do arquivo tese-exemplo.tex os parâmetros de configuração.
+% Veja no preambulo do arquivo tese-exemplo.tex os par?etros de configura?o.
 
 \begin{lstlisting}[frame=trbl]
     for(i = 0; i < 20; i++)
     {
-        // Comentário 
+        // Coment?io 
         System.out.println("Mensagem...");
     }
 \end{lstlisting}
 
 
 %% ------------------------------------------------------------------------- %%
-\section{Algumas Referências}
+\section{Algumas Refer?cias}
 \label{sec:algumas_referencias}
 
-É muito recomendável a utilização de arquivos \emph{bibtex} para o gerenciamento
-de referências a trabalhos. Nesse sentido existem três plataformas gratuitas
-que permitem a busca de referências acadêmicas em formato bib: 
+?muito recomend?el a utiliza?o de arquivos \emph{bibtex} para o gerenciamento
+de refer?cias a trabalhos. Nesse sentido existem tr? plataformas gratuitas
+que permitem a busca de refer?cias acad?icas em formato bib: 
 \begin{itemize}
 	\item \emph{CiteULike} (patrocinados por Springer): \url{www.citeulike.org}
-	\item Coleção de bibliografia em Ciência da Computação: \url{liinwww.ira.uka.de/bibliography}
-	\item Google acadêmico (habilitar bibtex nas preferências): \url{scholar.google.com.br}
+	\item Cole?o de bibliografia em Ci?cia da Computa?o: \url{liinwww.ira.uka.de/bibliography}
+	\item Google acad?ico (habilitar bibtex nas prefer?cias): \url{scholar.google.com.br}
 \end{itemize}
-Lamentavelmente, ainda não existe um mecanismo de verificação ou validação das
-informações nessas plataformas. Portanto, é fortemente sugerido validar todas
-as informações de tal forma que as entradas bib estejam corretas.  Também, tome
-muito cuidado na padronização das referências bibliográficas: ou considere TODOS
+Lamentavelmente, ainda n? existe um mecanismo de verifica?o ou valida?o das
+informa?es nessas plataformas. Portanto, ?fortemente sugerido validar todas
+as informa?es de tal forma que as entradas bib estejam corretas.  Tamb?, tome
+muito cuidado na padroniza?o das refer?cias bibliogr?icas: ou considere TODOS
 os nomes dos autores por extenso, ou TODOS os nomes dos autores abreviados.
 Evite misturas inapropriadas.
 
-Exemplos de referências com a tag:
+Exemplos de refer?cias com a tag:
 \begin{itemize}
 \item @Book: \cite{JW82}.
 {\scriptsize\begin{verbatim}
@@ -124,7 +124,7 @@ Exemplos de referências com a tag:
 \item @Article: \cite{MenaChalco08}.
 {\scriptsize\begin{verbatim}
 @Article{MenaChalco08,
- author   = {Jesús P. Mena-Chalco and Helaine Carrer and Yossi Zana and 
+ author   = {Jes?s P. Mena-Chalco and Helaine Carrer and Yossi Zana and 
             Roberto M. Cesar-Jr.},
  title    = {Identification of protein coding regions using the modified 
             {G}abor-wavelet transform},
@@ -138,7 +138,7 @@ Exemplos de referências com a tag:
 \item @InProceedings: \cite{alves03:simi}.
 {\scriptsize\begin{verbatim}
 @InProceedings{alves03:simi,
- author   = {Carlos E. R. Alves and Edson N. Cáceres and Frank Dehne and 
+ author   = {Carlos E. R. Alves and Edson N. C?eres and Frank Dehne and 
             Siang W. Song},
  title    = {A Parallel Wavefront Algorithm for Efficient Biological 
             Sequence Comparison},
@@ -182,8 +182,8 @@ Exemplos de referências com a tag:
 {\scriptsize\begin{verbatim}
 @PhdThesis{garcia01:PhD,
  author   = {Islene C. Garcia},
- title    = {Visões Progressivas de Computações Distribuídas},
- school   = {Instituto de Computação, Universidade de Campinas, Brasil},
+ title    = {Vis?es Progressivas de Computa?es Distribu?as},
+ school   = {Instituto de Computa?o, Universidade de Campinas, Brasil},
  year     = {2001},
  month    = {Dezembro}
 }
@@ -194,7 +194,7 @@ Exemplos de referências com a tag:
 @MastersThesis{schmidt03:MSc,
  author   = {Rodrigo M. Schmidt},
  title    = {Coleta de Lixo para Protocolos de \emph{Checkpointing}},
- school   = {Instituto de Computação, Universidade de Campinas, Brasil},
+ school   = {Instituto de Computa?o, Universidade de Campinas, Brasil},
  year     = {2003},
  month    = Oct
 }
@@ -234,24 +234,24 @@ Exemplos de referências com a tag:
 }
 \end{verbatim}}
 
-\item @Misc: para referência a artigo online \cite{fowler04:designDead}.
+\item @Misc: para refer?cia a artigo online \cite{fowler04:designDead}.
 {\scriptsize\begin{verbatim}
 @Misc{fowler04:designDead,
  author   = {Martin Fowler},
  title    = {Is Design Dead?},
  year     = {2004},
  month    = May,
- note     = {Último acesso em 30/1/2010},
+ note     = {?timo acesso em 30/1/2010},
  howpublished= {\url{http://martinfowler.com/articles/designDead.html}},
 }
 \end{verbatim}}
 
-\item @Misc: para referência a página web \cite{FSF:GNU-GPL}.
+\item @Misc: para refer?cia a p?ina web \cite{FSF:GNU-GPL}.
 {\scriptsize\begin{verbatim}
 @Misc{FSF:GNU-GPL,
  author   = {Free Software Foundation},
  title    = {GNU general public license},
- note     = {Último acesso em 30/1/2010},
+ note     = {?timo acesso em 30/1/2010},
  howpublished= {\url{http://www.gnu.org/copyleft/gpl.html}},
 }
 \end{verbatim}}
