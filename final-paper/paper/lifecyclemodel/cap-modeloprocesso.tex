@@ -1,6 +1,68 @@
 %% ------------------------------------------------------------------------- %%
-\chapter{Modelo de processo de software}
-\label{cap:modeloprocesso}
+\chapter{Processo de engenharia de software}
+\label{cap:processoengenharia}
+
+Processo de Engenharia de Software é uma sequência coerente de práticas que objetiva o desenvolvimento ou evolução de sistemas de software. Estas práticas englobam as atividades de especificação, projeto, desenvolvimento, testes e caracterizam-se pela interação de ferramentas, pessoas e métodos \cite{engsoftiki:17}.
+
+O processo de engenharia de software corresponde à definição, desenvolvimento, medição, gerenciamento, mudança e melhoria dos próprios processos de software \cite{SWEBOK2004}.
+
+A definição de processo pode ser um procedimento, uma política, ou uma norma. Processos de ciclo de vida de software são definidos por uma série de razões, incluindo o incremento da qualidade do produto, melhorias da compreensão humana e comunicação, apoio ao processo de melhoria, apoio aos processos de gestão, orientação aos processos automatizados, e providenciando a execução de suporte automatizado \cite{SWEBOK2004}. 
+
+Os tipos de definições exigidas no processo dependerão, pelo menos parcialmente, do motivo da definição. Também é importante notar que o contexto do projeto e da organização irão determinar a definição do tipo de processo que é mais útil. Variáveis importantes a considerar incluem a natureza do trabalho (por exemplo, a manutenção ou desenvolvimento), o domínio da aplicação, o modelo do ciclo de vida, e da maturidade da organização. \cite{SWEBOK2004}.
+
+O principal objetivo é apresentar um modelo de processo de software apropriado para o estudo de caso \textit{"Restaurante Da Gino"} a partir da adaptação da ISO/IEC 12207:1995.
+
+\section{Seleção do modelo de processo}
+
+Um modelo de processo de software, ou simplesmente modelo de processo, pode ser visto como uma representação abstrata de um processo de software, apresentando a descrição do processo segundo uma perspectiva particular. Além disso, oferece uma forma mais abrangente e fácil de representar o gerenciamento de processo de software e consequentemente o progresso do projeto \cite{engsoftiki:17}.
+
+O modelo de ciclo de vida que corresponde ao modelo de processo, é uma estrutura contendo processos, atividades e tarefas envolvidas no desenvolvimento, operação e manutenção de um produto de software, abrangendo a vida do sistema desde a definição de seus requisitos até o término de seu uso \cite{iso12207:95}.
+
+Para definir o modelo de processo a ser adotado, foi necessário definir os critérios de seleção e analisá-las sob a perspectiva do adquirente e fornecedor, no caso, restaurante \textit{Da Gino} e a empresa de desenvolvimento de software, respectivamente.
+
+
+\section{Critérios de seleção do modelo de processo}
+
+Os principais pontos que foram analisados para a escolha do modelo de processo foram os seguintes fatores:
+
+\begin{description}
+  \item [Organizacionais] As políticas das organizações em questão, que neste caso seriam a empresa contratada para o desenvolvimento do projeto e o adquirente (Gino);
+  \item [Documentação que deve ser gerada para o produto] Analisamos algumas necessidades e também informações disponibilizadas pelo adquirente;
+  \item [Características do projeto] Analisamos algumas características do projeto a ser desenvolvido:
+  \begin{itemize}
+    \item Criticidade
+    \item Tamanho
+    \item Visibilidade
+    \item Prazos de tempo e custo
+    \item Requisitos do sistema
+  \end{itemize}
+
+\end{description}
+
+\section{Definição do modelo de processo}
+
+O modelo de processo que definimos para o desenvolvimento do software do restaurante \textit{Da Gino} foi um modelo de processo baseado nas características dos modelos ágeis, cujas principais características são um processo iterativo que organiza-se através do desenvolvimento baseado em entregas frequentes em curtos períodos de tempo, e também é guiado por boas práticas para inúmeros processos como documentação, desenvolvimento, comunicação e gerenciamento em geral. Analisando a definição frente a um modelo de ciclo de vida foi escolhido o modelo de processo baseado em métodos ágeis Scrum.
+
+\section{Justificativa para a adoção do Modelo de Processo}
+
+Com relação ao fator organizacional verificou-se que o Restaurante \textit{Da Gino} encontra-se em pré-construção tanto de sua parte física quanto dos processos lógicos que regeriam a organização e como hipótese assumida definimos que os processos de regras organizacionais seriam processos de grande maleabilidade e fácil adaptação. 
+
+A empresa responsável pelo desenvolvimento do sistema é uma fábrica de software e possui como principal regra organizacional o fator produtividade, portanto o desenvolvimento de sistemas é baseado principalmente em entregas frequentes em pequenos intervalos de tempo. 
+
+A partir disto, conclui-se que as duas empresas apresentam uma grande flexibilidade e desejam ter um sistema funcionando em um curto espaço de tempo. 
+
+Já com relação a documentação, assumiremos que os documentos exigidos pelo adquirente são documentos de baixa complexidade e que somente refletem as formas de utilização do sistema, como por exemplo, um manual final de utilização do sistema. Do lado da empresa desenvolvedora em função dos objetivos  finais fica claro que neste caso quanto mais específica for a documentação permitindo que o desenvolvimento seja realizado é o suficiente, ou seja, a documentação precisa auxiliar principalmente o desenvolvimento e não as outras equipes como qualidade, de teste e gerenciamento.
+
+Analisando as principais características do produto a ser desenvolvido, temos:
+
+\begin{description}
+  \item [Criticidade e Visibilidade] o software a ser desenvolvido não é um sistema crítico e não será um sistema que irá alavancar o nome de uma empresa, portanto não possui grande visibilidade como produto para o restaurante \textit{Da Gino}. Logo, não há a necessidade de empresas terceiras que avaliem a qualidade, inspecionem os códigos e as funcionalidades ou que valide com extrema cautela através de processos específicos, pois este papel poderá ser realizado pelo própria equipe desenvolvedora.
+  \item [Prazos de tempo e custo] Assumiremos que o projeto tem um custo reduzido para ser desenvolvido por volta R\$ 350.000,00 para ser utilizado na compra de equipamentos eletrônicos, computadores, monitores e custear todo o projeto, além disso necessita que seja desenvolvido e terminado com restrições de tempo, cerca de 6 meses. A partir desta premissa, é necessário escolher um modelo de processo que permita desenvolver uma aplicação com uma equipe reduzida de no máximo cinco pessoas, com média a alta experiência e que seja auto-sustentável, organizável, e possuam facilidade na troca de informações.
+
+  \item [Requisitos do sistema] os requisitos do sistema não são complexos, no entanto serão todos passados pelo dono do restaurante que no caso não possui conhecimento nenhum na área de sistemas, portanto concluímos que os requisitos são altamente mutáveis e podem estar incompletos o que irá refletir na equipe de desenvolvimento que por sua vez precisa ser capaz de gerenciar com sucesso às frequentes mudanças dos requisitos.
+\end{description}
+
+A partir das análises das principais características do produto, dos aspectos organizacionais e da documentação, concluímos o modelo de processo baseado em metodologias ágeis é o mais adequado. O modelo de processo ágil adotado será o \textit{Scrum}. O princípio chave do \textit{Scrum} é o reconhecimento que os clientes irão mudar de idéia sobre o que eles precisam e querem e que estas mudanças são imprevisíveis. A partir disso, o \textit{Scrum} foca em como maximizar as habilidades do time para fazer entregas mais rápido, para responder a alterações nos requisitos e para adaptar-se ao avanço das tecnologias e mudanças do mercado \cite{scrumwiki:17}.
 
 %% ------------------------------------------------------------------------- %%
 \section{Processo de aquisição}
@@ -64,14 +126,14 @@ O fornecedor será responsável por definir todos os requisitos em resposta ao p
 
 \subsection{Contrato}
 
-Contrato terá escopo variável para atender as necessidades do adquirente de acordo com suas prioridades e trabalhar de acordo com o modelo de desenvolvimento da empresa, SCRUM.
+Contrato terá escopo variável para atender as necessidades do adquirente de acordo com suas prioridades e trabalhar de acordo com o modelo de desenvolvimento da empresa, Scrum.
 
 \subsection{Planejamento}
 
 \begin{itemize}
-  \item Recursos internos para o desenvolvimento do software utilizando o modelo iterativo - SCRUM (5.2.4.4)
+  \item Recursos internos para o desenvolvimento do software utilizando o modelo iterativo Scrum (5.2.4.4)
   \item Requisitos e prioridades serão descritos pelo documento de Visão (5.2.4.1)
-  \item Estrutura organizacional e cada ciclo será definido pelo SCRUM (5.2.4.2 e 5.2.4.5 a.)
+  \item Estrutura organizacional e cada ciclo será definido pelo Scrum (5.2.4.2 e 5.2.4.5 a.)
   \item Uso do Kanban e diagrama de Burndown para realizar acompanhamento do progresso (5.2.4.5 n.)
   \item Estes diagramas de \textit{Burndown} poderão ser disponibilizados periodicamente ao adquirente para acompanhamento do progresso
   \item Será provido treinamento ao adquirente para a utilização do produto do software (5.2.4.5 o.)
@@ -83,23 +145,23 @@ Monitoramento de progresso feito por Kanban e Burndown (5.2.5.3).
 
 \subsection{Revisão e avaliação}
 
-Fornecedor fará uso de um modelo de entregas parciais. O adquirente irá revisar de acordo com a descrição em cada item de requisito levantando durante as entregas parciais.
+Fornecedor fará uso de um modelo de entregas parciais. O adquirente irá revisar de acordo com a descrição em cada item de requisito levantando durante as entregas parciais. 
 
 \subsection{Entrega e conclusão}
 
-O adquirente poderá fazer a validação e aceitação das entregas parciais evoluindo até a aceitação do projeto final.
+O modelo de processo adotado baseia-se em entregas frequentes de versões do produto que sejam completos e utilizáveis. Quer dizer, o cliente ao final de cada entrega terá uma versão do produto que já pode ser utilizada. O adquirente fará a validação e aceitação das entregas parciais evoluindo até a aceitação do produto final.
 
 %% ------------------------------------------------------------------------- %%
 \section{Processo de desenvolvimento}
 \label{sec:desenvolvimento}
 
-Devido ao conhecimento e experiência do fornecedor (empresa de desenvolvimento de software), foi definido o modelo iterativo SCRUM com metodologias ágeis para o desenvolvimento do software. 
-
 Segue uma descrição das atividades e tarefas do processo de desenvolvimento:
 
 \subsection{Implementação do processo}
 
-Para o desenvolvimento do software para o adquirente, o modelo de ciclo de vida de software definido é o modelo iterativo SCRUM utilizando metodologias ágeis. Para a correta implementação do processo, os desenvolvedores e gerentes deverão ler o livro do SCRUM.
+O Scrum é um modelo de processo ágil iterativo e incremental para gerenciamento de desenvolvimento de produto \cite{scrumwiki:17}. O Scrum contém práticas bem definidas que devem ser seguidas pela equipe e organização. As práticas são fáceis de aprender, porém são difíceis de dominar \cite{Schw01a}. 
+
+Para a correta implementação do processo, os desenvolvedores e gerentes deverão ler o livro do Scrum.
 
 \begin{figure}[!h]
   \centering
