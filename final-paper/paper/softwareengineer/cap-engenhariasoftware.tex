@@ -359,25 +359,522 @@ Caso haja uma descontinuação do software, todos os artefatos gerados durante o
 \section{Requisitos de Software}
 \label{sec:requisitos}
 
-\large{Seção de requisitos - Marcelo}
+A fim de definirmos alguns pontos específicos sobre a área de conhecimento Engenharia de Requisitos de Software, proponho elucidar inicialmente os principais focos a serem seguidos no momento da iniciação desta atividade de Elicitação de Requisitos de Software que é considerada uma atividade de importância em todo o processo de Desenvolvimento do Sistemas. 
+
+De acordo com a norma IEEE Std-830/1998 -IEEE Recommended Practice for Software Requirements Specifications \cite{IEEE830-1998} um conjunto de diretrizes foram definidas para o desenvolvimento de uma ERS que seguem:
+\begin{description}
+\item [Correção:] Esta característica consiste em observar se todo o requisito que consta do documento é um requisito que reflete uma necessidade real, ou seja, que tenha que ser implementado pelo software;
+\item [Não ambiguidade:] Esta característica estabelece que cada um dos requisitos do documento tenha apenas uma interpretação; 
+\item [Completude:] Esta característica tem por finalidade analisar se na especificação inclui todos os requisitos significativos, a definição das respostas do software a todos os tipos de dados de entrada em todas as situações possíveis, tanto válidas como inválidas, e referenciam todos os termos, figuras, tabelas, diagramas, além das unidades de medidas empregadas; 
+\item[Verificabilidade:] Neste caso, esta característica consiste em verificar se, para cada um dos requisitos contidos no documento, existe um processo finito e economicamente viável por meio do qual uma pessoa ou uma máquina pode checar que o software satisfaz o requisito; 
+\item[Consistência:] A finalidade desta característica é observar se nenhum dos requisitos do documento, ao ser verificado individualmente, está em conflito com qualquer outro requisito presente ou contido no mesmo documento; 
+\item[Classificação:] O objetivo desta característica é verificar se existem na especificação/documento indicações quanto aos critérios que determinem a importância (essências, condicionais ou opcionais) ou estabilidade do requisito; 
+\item[Modificabilidade:] Esta característica consiste em verificar se modificações podem ser realizadas e agregadas ao documento de forma fácil, completa e consistente em relação à  sua estrutura e estilo; 
+\item[Rastreabilidade:] A finalidade desta característica está em observar se a origem de cada requisito é clara e se possibilitará alterações e melhorias quando necessário em uma nova versão do produto;
+\end{description}
+
+Seguindo estas definições e métricas ao desenvolvimento de uma (ERS) iniciamos o trabalho detalhando com cuidado alguns pontos principais sobre o produto. O Restaurante utilizará o sistema (SGR) que terá entre as suas funcionalidades: padronização das receitas, controle de estoque dos itens utilizados, nas receitas, visibilidade dos garçons quanto à disponibilidade dos itens disponíveis de acordo com o pedido do cliente para determinado prato, controle da disponibilidade das mesas pela recepcionista ou maître, painel informativo sobre pratos concluídos, histórico de consumo dos itens dos últimos 6 meses. O restaurante opera com equipe pequena de funcionários.
+
+
+\begin{table}[htb]
+      \begin{center}
+        \begin{tabular}{| p{6cm} | p{6cm} |}
+        \hline
+        \textbf{O problema de} & Recepção e atendimento manual dos clientes no restaurante, controle manual de entrada e saída de itens do estoque, falta de padronização das receitas das refeições.  \\ \hline
+        \textbf{Afeta} & Gino, seus funcionários, fornecedores e clientes. \\ \hline
+        \textbf{Cujo impacto é} & O desperdício de insumos, atendimento insatisfatório, perda de receita e erro de provisionamento dos pedidos de compra. \\ \hline
+        \textbf{Uma solução de sucesso seria} & Criar um sistema que torne os pedidos de compra precisos, consumo eficiente e controlado dos insumos e aumente a rapidez no atendimento. \\ \hline
+        
+        \end{tabular}
+      \end{center}
+    \caption{Declaração do problema}
+    \end{table}
+
 
 \subsection{Atividades e Papéis}
 
-Em uma tabela, mapear as atividades definidas em 2.1.2
-para requisitos de software nas atividades de requisitos de
-software do processo selecionado em 2.1.3.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{softwareengineer/images/stakeholders} 
+  \caption{Resumo dos stakeholders}
+  \label{fig:stakeholders} 
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{softwareengineer/images/users} 
+  \caption{Resumo dos usuários}
+  \label{fig:users} 
+\end{figure}
+
+\subsubsection{Ambiente do usuário}
+A equipe do restaurante é composta por dezenove pessoas, sendo destas o dono, oito pessoas da equipe da cozinha (uma destas recebe as mercadorias), oito garçons, um recepcionista e um maître. Se houver crescimento do número de clientes, pode haver contratações de novos funcionários. O restaurante é dividido em cinco ambientes principais: recepção, cozinha, salão de refeição, estoque e escritório.
+
+O restaurante opera em horário de almoço e janta. No almoço serão servidos pratos do dia ou a opção A La Carte. O período de tempo médio de permanência dos clientes no restaurante é de 45 minutos no horário de almoço e 1 hora na janta, podendo variar em finais de semana.
+
+O fluxo de atendimento funciona da seguinte forma: o cliente se apresenta na recepção, a recepcionista verifica se há disponibilidade de mesas de acordo com o número de pessoas. Havendo disponibilidade, o cliente é levado até a mesa onde pode escolher o seu prato. Se não houver disponibilidade, o cliente recebe uma senha impressa que representa um número na fila de espera. No momento que o cliente fizer o pedido, o garçom faz o lançamento do mesmo em um smartphone, que já lhe dá o retorno se há ou não disponibilidade dos ingredientes na cozinha para preparar a solicitação do cliente. 
+
+O garçom pode visualizar através de um painel os pedidos prontos e qual a respectiva mesa. Após o pagamento da conta, os garçons limpam e liberam a mesa informando a recepção.
+Quando houver um novo recebimento de mercadoria, Gino e um funcionário irão fazer o lançamento dos itens, quantidades e preços no sistema, a fim de controlar a utilização de insumos. Gino precisa manter um histórico de compras dos últimos seis meses.
 
 
-Definir as atividades e os papéis dos responsáveis
-envolvidos do modelo de processo selecionado.
+Não há nenhum sistema sendo empregado no momento, será um novo estabelecimento.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{softwareengineer/images/stakerholdersneed} 
+  \caption{Principais necessidades dos stakeholders e usuários}
+  \label{fig:stakerholdersneed} 
+\end{figure}
+
+\subsubsection{Visão Geral do Produto}
+
+\subparagraph{Perspectiva do produto}
+
+Todos os módulos compartilharão o mesmo banco de dados.Uma vez que um cliente faça um pedido, o aplicativo integrado do smartphone dos garçons se conectará com o catálogo de receitas que, por sua vez, se conectará com o Sistema de Controle de Estoque e receberá o retorno se há ou não disponibilidade dos ingredientes para preparar o prato solicitado; o Sistema de Controle de Disponibilidade de Mesas se conectará com o aplicativo integrado do smartphone dos garçons para receber a liberação ou ocupação das mesas; o Painel de Pedidos exibirá a mesa e o número do pedido solicitado. Para o pagamento, o sistema SGR será integrado às operadoras de cartão via internet ou 3G, utilizando as máquinas de pagamento padrão.
+
+\subsubsection{Características do produto}
+
+\subparagraph{Sistema de Controle de Estoque}
+
+O controle de estoque fará a gerência dos itens em estoque do restaurante. O usuário deverá cadastrar os produtos descrevendo o item, a quantidade e o valor cobrado pelo item. Conforme houver a necessidade de remover produtos do estoque, um funcionário dará baixa dos itens no sistema, de forma que a cozinha sempre tenha o conhecimento da quantidade de itens disponíveis em estoque, assim como terá um histórico de consumo dos itens disponíveis em estoque.
+
+\subparagraph{Sistema de Controle de Disponibilidade de Mesas}
+
+O recepcionista será o usuário deste sistema e terá um mapa do local que exibe as mesas disponíveis. Caso não hajam mesas disponíveis, o sistema gerará uma senha correspondente a uma fila de espera. Esta senha será impressa e entregue ao cliente.
+
+\subparagraph{Catálogo de Receitas Padronizadas}
+
+
+O sistema de receitas terá o cadastro de todas as receitas realizadas pelo restaurante, assim como as devidas quantidades de ingredientes e método de preparo. Este sistema terá uma integração com o sistema de controle de estoque no qual o cozinheiro seleciona uma receita e o sistema retorna a informação se há ingredientes disponíveis ou não. Desta forma, a cozinha pode notificar os garçons sobre a indisponibilidade de itens.
+
+\subparagraph{Integração com smartphone}
+
+Os garçons possuirão um smartphone que conterá um aplicativo onde poderão lançar os pedidos dos clientes. É por este aplicativo que os garçons receberão a notificação da cozinha sobre a disponibilidade de pratos e também notificarão a recepção sobre a liberação de mesas.
+
+
+\subparagraph{Painel de Pedidos}
+
+
+O painel de pedidos exibirá o número do pedido e a mesa correspondente. Este painel ficará disponível para os garçons.
+
+
+\subparagraph{Precedência e prioridade}
+\begin{enumerate}
+  \item Sistema de controle de estoque
+  \item Catálogo de receitas
+  \item Sistema de controle de disponibilidade de mesas
+  \item Integração com smartphone
+  \item Painel de pedidos
+\end{enumerate}
+
+\subparagraph{Outros requisitos do produto}
+
+Dentre os requerimentos do produto está a aquisição de dois computadores: um para a recepção e outro para o escritório do Gino, com sistema operacional Windows 7 ou superior. O Restaurante deve possuir uma rede de Wi-Fi interna de forma que os computadores possam estar interligados em rede. Cada garçom deverá receber um smartphone com sistema operacional em Android onde será instalado o aplicativo de registro de pedidos. Deverá ser adquirido um painel que exibirá o número da senha de espera dos clientes.
 
 \subsection{Artefatos}
 
-Definir os artefatos produzidos pelas atividades do processo
-de software e dar um exemplo de cada artefato.
+Elicitação de requisitos é a prática de coletar os requisitos de um sistema a partir de informações obtidas do usuário, cliente e stakeholders. 
 
-Definir e justificar a(s) técnica(s) de elicitação dos
-requisitos de software que devem ser utilizadas.
+Elicitação de requisitos não é uma tarefa trivial, pois nunca poderemos afirmar com certeza que todos os requisitos foram coletados pela simples tarefa de perguntar ao cliente como o sistema deve ou não funcionar. As práticas de elicitação de requisitos incluem entrevistas, questionários, observação, workshops, brainstorming, casos de uso, role playing e protótipo.
+
+Antes dos requisitos serem analizados, modelados ou especificados, eles devem ser coletados através de um processo de elicitação. Elicitação de requisitos é parte do processo de engenharia de requisitos.
+
+\subsubsection{Problemas}
+
+O processo elicitação de requisitos pode parecer simples: Pergunte ao cliente, usuário e outras pessoas sobre o objetivo do sistema ou produto, o que deve ser feito, como o sistema se encaixa no negócio, e finalmente, como o sistema será utilizado no dia-a-dia. Porém, problemas podem surgir que complicarão este processo.
+
+
+Em 1992, Christel e Kang \cite{ChristelIssuesin1992} identificaram problemas que são um desafio para a elicitação de requisitos:
+
+\begin{description}
+\item [Problemas de escopo] O escopo do sistema é mal definido ou o cliente/usuário definem detalhes técnicos desnecessários que causam mais confusão, ao invés de simplificar, o objetivo do sistema.
+
+\item [Problema de entendimento] Os clientes/usuários não tem absoluta certeza sobre o que é necessário, tem um pobre conhecimento sobre as capacidades e limitações do ambiente computacional, não tem completo conhecimento do domínio do problema, tem problema de comunicação com os programadores, omitem informações que julgam ser óbvias, especificam requisitos que conflitam com as necessidades do cliente/usuário, ou especifica requisitos intangíveis ou não testáveis.
+
+\item[Problema de volatilidade] Os requisitos mudam com o tempo. A taxa de alteração é mencionado como o nível de volatilidade do requisito.
+
+\end{description}
+A qualidade dos requisitos podem ser melhorados através de:
+
+\begin{description}
+\item [Visualização] Uso de ferramentas que promovem o melhor entendimento do produto final desejado como visualização ou simulação.
+\item [Linguagem consistente] Uso de definições simples e consistentes para descrever os requisitos como uma linguagem natural e uso de termos de negócios comumente utilizados na empresa.
+
+\item [Práticas] Uso sistemático de práticas organizacional que descrevem técnicas de coletar e o tipo de requisitos a serem coletados. Estas práticas devem ser usadas nos projetos da empresa.
+\item [Uso de modelos] Produzir um conjunto de modelos e padrões para documentar os requisitos. 
+\item [Documentar dependências] Documentar dependências e inter-relações entre os requisitos.
+\item [Análise de mudança] Analisar a raiz do problema das alterações nos requisitos e fazer as ações corretivas.
+\end{description}
+
+\subsubsection{Técnicas de Elicitação de Requisitos}
+
+O SWEBOK terceira edição \cite{IEEEComputerSociety:2014:GSE:2616205} define as seguintes técnicas de elicitação:
+
+\begin{itemize}
+\item Entrevistas (Interviews);
+\item Cenários (Scenarios);
+\item Protótipos (Prototype);
+\item Observação (Observation);
+\item Estória de usuário (User stories);
+\item Outras técnicas (Other techniques).
+\end{itemize}
+
+Selecionar a técnica adequada de elicitação de requisitos não é simples. Para escolher a técnica mais adequada iremos utilizar as seguintes suposições \cite{atil:2012}:
+
+\begin{itemize}
+\item É a única técnica que se conhece;
+\item A técnica funcionou da última vez, então também funcionará agora;
+\item Intuitivamente, conclui-se que a técnica é eficaz na atual circunstância;
+\item Alguma metodologia foi adotada, e essa metodologia prescreve uma técnica particular no momento atual.
+\end{itemize}
+
+No nosso caso, adotaremos que a empresa tem conhecimento e ampla experiências em estórias de usuário. Esta técnica foi adotada em outros projetos e foi a que obteve maior sucesso. Product Backlog é onde se inicia todo o processo do Scrum, sendo considerada a prática responsável pela parte da elicitação da área de engenharia de requisitos.
+
+Serão realizadas reuniões e serão definidas as estórias de usuário com todos os stakeholders do projeto. Será definido o Product Backlog que é a lista de atividades que serão desenvolvidas no projeto.
+
+
+\subsubsection{DEFINIÇÃO INCIAL DA LISTA DE PENDÊNCIAS DO PRODUTO DE SOFTWARE (PRODUCT BACKLOG)
+}
+
+\subparagraph{Pendências do Produto - ProductBacklog(PB)}
+
+\begin{enumerate}
+  \item Sistema de Controle de Estoque
+  \item Catálogo de receitas
+  \item Sistema de controle de disponibilidade de mesas
+  \item Integração com smartphone
+  \item Painel de pedidos
+\end{enumerate}
+
+\begin{enumerate}
+\item \textbf{Sistema de controle de estoque}
+
+\begin{enumerate}
+  \item Aceitação do pedido do cliente em relação ao estoque;
+  \item Baixa dos itens usados pela cozinha;
+  \item Feedback ao catálogo de receitas;
+  \item Cadastro dos fornecedores;
+  \item Aviso de baixa quantidade de ingredientes em estoque;
+  \item Compra de pedido de insumos baseado no histórico dos últimos 6 meses;
+  \item Lançamento dos itens no sistema.
+\end{enumerate}
+
+\item \textbf{Catálogo de receitas}
+
+\begin{enumerate}
+  \item Cadastro de todas as receitas com as respectivas quantidades de ingredientes utilizados;
+  \item Indicar se receita será utilizada no almoço, jantar ou ambos;
+  \item Indicar se a receita é prato do dia (aumentar quantidade de ingredientes em estoque);
+  \item Comparação do pedido do cliente com a quantidade de ingredientes disponíveis em estoque;
+  \item Feedback ao garçom.
+\end{enumerate}
+
+\item \textbf{Sistema de controle de disponibilidade de mesas}
+
+\begin{enumerate}
+  \item Reserva de mesa;
+  \item Alocação de mesa;
+  \item Desalocação de reserva;
+  \item Inserir cliente na lista de espera.
+\end{enumerate}
+
+\item \textbf{Integração com smartphone}
+
+\begin{enumerate}
+  \item Anotar pedidos;
+  \item Desalocação de mesa.
+\end{enumerate}
+
+\item \textbf{Painel de pedidos}
+
+\begin{enumerate}
+  \item Alterar o status do pedido para “Pronto”.
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Papéis, Responsabilidades e Atributos}
+
+\begin{enumerate}
+  \item Gerente
+
+  \begin{enumerate}
+    \item Responsabilidades
+
+      \begin{enumerate}
+        \item Consulta de produtos em estoque;
+        \item Consulta de fornecedores;
+        \item Cadastro de fornecedores;
+        \item Cadastro de usuários;
+        \item Cadastro de receita;
+        \item Consulta de balanço por período.
+      \end{enumerate}
+
+    \item Atributos
+
+      \begin{enumerate}
+        \item Frequência de uso: diária;
+        \item Conhecimento excelente do domínio;
+        \item Conhecimento excelente de computador;
+        \item Controle das operações
+      \end{enumerate}
+  \end{enumerate}
+
+  \item Garçons
+
+  \begin{enumerate}
+    \item Responsabilidades
+
+      \begin{enumerate}
+          \item Realizar pedido;
+          \item Desalocação de mesas;
+          \item Verificar status do pedido;
+          \item Encerramento da conta.
+      \end{enumerate}
+
+    \item Atributos
+
+      \begin{enumerate}
+          \item Frequência de uso: um turno;
+          \item Conhecimento do domínio: médio;
+          \item Conhecimento de usuário de computador: médio;
+          \item Metas gerais de uso: poucas entradas por registro.
+      \end{enumerate}
+  \end{enumerate}
+
+
+  \item Cozinheiro
+
+  \begin{enumerate}
+    \item Responsabilidades
+
+      \begin{enumerate}
+          \item Informa pedido pronto;
+          \item Verificar catálogo de receita.
+
+      \end{enumerate}
+
+    \item Atributos
+
+      \begin{enumerate}
+          \item Frequência de uso: um turno;
+          \item Conhecimento do domínio: bom;
+          \item Conhecimento de usuário de computador: bom;
+          \item Metas gerais de uso: não entra com registros, apenas pressiona botões.
+      \end{enumerate}
+  \end{enumerate}
+
+  \item Recepcionista
+
+  \begin{enumerate}
+    \item Responsabilidades
+
+      \begin{enumerate}
+          \item Verifica disponibilidades de mesa;
+          \item Verifica reservas de mesa;
+          \item Alocação de mesas;
+          \item Incluir reserva.
+      \end{enumerate}
+
+    \item Atributos
+
+      \begin{enumerate}
+          \item Frequência de uso: período da manhã e tarde;
+          \item Conhecimento do domínio: excelente;
+          \item Conhecimento de usuário de computador: excelente;
+          \item Metas gerais de uso: não entra com registros, apenas pressiona botões.
+      \end{enumerate}
+  \end{enumerate}
+
+  \item Controlador de estoque
+
+  \begin{enumerate}
+    \item Responsabilidades
+
+      \begin{enumerate}
+          \item Cadastra novos itens no estoque;
+          \item Atualiza quantidade de cada item entregue pelos fornecedores;
+          \item Atualiza valor do item entregue.
+      \end{enumerate}
+
+    \item Atributos
+
+      \begin{enumerate}
+          \item Frequência de uso: uma vez por semana;
+          \item Conhecimento do domínio: excelente;
+          \item Conhecimento de usuário de computador: excelente;
+          \item Metas gerais de uso: entrar com os dados de entrada e saída do estoque, assim como auxiliar o Gino quanto ao relatório de histórico de pedidos.
+
+      \end{enumerate}
+  \end{enumerate}
+
+\end{enumerate}
+
+\subsubsection{Estórias de usuário}
+
+\paragraph{Compra de pedido de insumos baseado no histórico dos últimos 6 meses (estoque)}
+
+Eu como um gerente de estoque do restaurante “Da Gino”, quero realizar uma compra de insumo baseado no histórico dos últimos seis meses para suprir o estoque de modo que a realização de novos pedidos pelos clientes não possam ser bloqueados por falta deste suprimento.
+
+\subparagraph{Cenário Principal:}
+
+Seleciona o produto na lista de insumos cadastrados no Sistema e verificar a média de compra.
+
+\subparagraph{Cenário Alternativo:}
+
+Produto desejado não está na lista de produtos cadastrados no sistema.
+
+\subparagraph{Critérios de Aceitação:}
+
+\begin{itemize}
+\item Verificar se produto está cadastrado no sistema.
+\item Verificar se a quantidade existente no estoque está abaixo do limite.
+\item Receber a confirmação com a quantidade do produto requerida para a próxima compra.
+\item Cadastrar o produto no sistema e receber confirmação do cadastro com sucesso.
+\item Registrar a compra inicial para este produto inserindo a quantidade desejada e receber a confirmação de compra registrada com sucesso.
+\end{itemize}
+
+\subparagraph{Teste de Aceitação:}
+
+\begin{itemize}
+\item Gerente de estoque insere o produto no campo texto e clica no botão “Procurar Produto”, sistema retorna o produto em uma grid na tela.
+\item Gerente de estoque clica sobre o produto encontrado na grid, e uma nova tela é aberta com todas as informações do produto: nome, marca, quantidade em estoque, data da última compra e quantidade comprada.
+\item Gerente de estoque clica sobre o botão “Calcular Próxima Compra” e sistema mostra um pop – up com a quantidade requerida para próxima compra e a mensagem “Deseja registrar a nova compra” seguida de dois botões “Sim” e “Não”.
+\item Gerente de estoque clica sobre o botão “Sim” e recebe confirmação da compra registrada com sucesso.
+\item Gerente de estoque clica sobre o botão “Não” e recebe confirmação da compra não registrada.
+\item Gerente de estoque clica sobre o botão “Calcular Próxima Compra” e sistema mostra um pop – up com a mensagem “Suprimento com quantidade suficiente no estoque.”.
+\end{itemize}
+
+\subparagraph{Teste Cenário Alternativo:}
+
+\begin{itemize}
+  \item Gerente de estoque insere o produto no campo texto e clica no botão “Procurar Produto”, sistema retorna a seguinte mensagem “Produto não encontrado.”.
+\item Gerente de estoque clica sobre o botão “Cadastrar Produto” e uma nova tela com um formulário é aberta.
+\item Gerente de estoque preenche formulário na nova tela e clica sobre o botão “Salvar” e recebe confirmação “Cadastro do produto realizado com sucesso. ”.
+\item Gerente de estoque preenche formulário e clica sobre o botão “Salvar” e recebe alerta “Campos obrigatórios precisam ser preenchidos. ”.
+\item Gerente de estoque clica sobre o botão “Registrar primeira compra” e um campo texto é habilitado para inserir informação de quantidade.
+\item Gerente de estoque insere um valor de quantidade e clica em “Salvar” e recebe confirmação “Compra inicial registrada com sucesso. ”.
+\item Gerente de estoque insere um valor de quantidade e clica em “Salvar” e recebe um alerta “Quantidade inválida ou menor que o limite. ”.
+
+\end{itemize}
+
+\paragraph{Comparar pedido de cliente com estoque (Catálogo de receitas)}
+
+Eu como cozinheiro, eu quero comparar os pedidos com as receitas e com a quantidade de ingredientes em estoque, de tal modo que sistema me avise se está acabando algum ingrediente.
+
+\subparagraph{Cenários Principal:}
+
+Comparação indica que é possível fazer o prato com sucesso.
+
+\subparagraph{Cenário Alternativo:}
+
+Comparação indica que é possível fazer o prato com sucesso, mas um ingrediente está acabando ou acabou.
+
+\subparagraph{Critérios de aceitação:}
+
+\begin{itemize}
+\item O sistema compara o pedido do cliente com a receita padronizada e verifica se é possível fazer o prato.  
+\item O sistema procura o pedido no catálogo padronizado de receitas e relaciona todos os ingredientes a serem utilizados. 
+\item O sistema acessa o estoque e verifica a quantidade itens disponíveis de cada ingrediente. 
+\item O sistema indica se algum ingrediente está acabando ou está indisponível.
+\end{itemize}
+
+\subparagraph{Teste de aceitação:}
+
+\begin{itemize}
+\item O cozinheiro checa o próximo pedido e aperta um botão confirmando que é possível fazer o prato e na tela ou painel de pedidos aparece o status do prato “em andamento”. 
+\item Ao termino da confecção do prato, o cozinheiro aperta um botão avisando que o prato está pronto e o sistema muda o  status para “pronto” no painel de pedidos.
+\item Aparece piscando, na tela um item de ingrediente que está acabando.
+\item Aparece em vermelho,  na tela um item de ingrediente que acabou.
+\end{itemize}
+
+\paragraph{Alocação de mesa (Controle de disponibilidade de Mesas)}
+
+Eu, como um recepcionista do Restaurante Da Gino, quero alocar um cliente em uma mesa de forma que no Sistema de Disponibilidade de Mesa, a mesa em questão fique com o status de “Ocupada”.
+
+\subparagraph{Cenários Principal:}
+
+Alocar cliente em uma mesa disponível.
+
+\subparagraph{Cenário Alternativo:}
+
+Alocar cliente em uma mesa ocupada.
+
+\subparagraph{Critério de aceitação:}
+
+\begin{itemize}
+\item Alocar um cliente em determinada mesa que antes estava verde no mapa de mesas e ela passa a ficar com a cor vermelha, representando o status de ocupada.
+\item Não será possível alocar um cliente em uma mesa com um status vermelho.
+\end{itemize}
+
+\subparagraph{Teste de aceitação:}
+
+\begin{itemize}
+\item Ao clicar sobre uma mesa vermelha, a seguinte mensagem deve aparecer na tela “Mesa ocupada”;
+\item Ao clicar sobre uma mesa verde, a seguinte mensagem deve aparecer na tela “Mesa disponível. \item Deseja alocar um cliente? ”e dois botões de resposta (sim e não).
+\item Ao clicar no botão “Sim”, quando perguntado se deseja alocar o cliente, a mesa deverá mudar da cor verde para cor vermelha.
+\item Ao clicar no botão “Não”, quando perguntado se deseja alocar o cliente, a mesa deverá permanecer com a cor verde.
+\end{itemize}
+
+\paragraph{Anotar Pedido}
+
+Eu como garçom do Restaurante "Da Gino", desejo anotar os pedidos dos clientes no dispositivo móvel com integração com o sistema do restaurante de tal modo que o pedido chegue instantaneamente na cozinha.
+
+\subparagraph{Cenário Principal:}
+
+Anotação do pedido com sucesso.
+
+\subparagraph{Cenário Alternativo:}
+
+Pedido não disponível para solicitação.
+
+\subparagraph{Critérios de aceitação:}
+
+\begin{itemize}
+\item Verificar disponibilidade do prato pelos itens da receita.
+\item Verificar tempo médio de preparo do prato.
+\item Receber confirmação que o pedido foi realizado e está com o status "Em andamento".
+\end{itemize}
+
+\subparagraph{Teste de aceitação:}
+
+\begin{itemize}
+\item Garçom seleciona uma caixa de checagem dos itens do pedido do cliente, clica no botão 'Realizar pedido', sistema mostra mensagem 'Pedido Confirmado'.
+\item Garçom clica no botão 'Realizar Pedido', sistema detecta que nenhum item foi selecionado, sistema mostra mensagem 'Por favor, selecione pelo menos um item'.
+\item Garçom seleciona uma caixa de checagemdos itens do pedido do cliente, clica no botão 'Realizar pedido', sistema mostra mensagem 'Item: carne, em falta no estoque'.
+\item Garçom seleciona uma caixa de checagemdos itens do pedido do cliente, clica no botão 'Realizar pedido', sistema mostra mensagem 'Pedido não disponível para solicitação'.
+\end{itemize}
+
+\paragraph{Alterar status do pedido para "Pronto" (Painel de pedidos)}
+
+Eu como cozinheiro do Restaurante "Da Gino", desejo poder alterar o status dos pedidos solicitados de "Em Andamento" para "Pronto" de tal modo que os garçons visualizem a alteração do status e levem os pratos aos clientes instantaneamente.
+
+\subparagraph{Cenário Principal:}
+
+Status alterado com sucesso.
+
+\subparagraph{Cenário Alternativo:}
+
+Lista de pedidos 'Em Andamento' está vazia.
+
+\subparagraph{Critérios de aceitação:}
+
+\begin{itemize}
+\item Verificar pedido com status "Em andamento".
+\item Receber confirmação que o status do pedido foi alterado para "Pronto".
+\item Verificar se foi dado 'baixa' dos itens do pedido no estoque de acordo com o catálogo de receitas.
+
+\end{itemize}
+
+\subparagraph{Teste de aceitação:}
+
+\begin{itemize}
+  \item Cozinheiro seleciona o uma caixa de checagem do pedido a ser alterado o status, clica no botão “Pedidos Prontos”, sistema mostra mensagem “Status do pedido alterado com sucesso”;
+\item Garçom clica no botão “Pedidos Prontos”, sistema detecta que nenhum item foi selecionado, sistema mostra mensagem “Por favor, selecione pelo menos um pedido”;
+\item Sistema não consegue retornar lista de pedidos “Em Andamento”, exibe mensagem “Não há pedidos em andamento” e botão de atualizar lista.
+\item Sistema não consegue retornar lista de pedidos “Em Andamento”, exibe mensagem “Falha ao buscar pedidos em andamento, por favor, tente novamente” e botão de atualizar lista.
+
+\end{itemize}
 
 \section{Qualidade de software}
 \label{sec:qualisoftware}
@@ -459,39 +956,689 @@ exemplo de artefato.
 \section{Teste de software}
 \label{sec:teste}
 
-\large{Seção de teste de software - marcelo}
-
 \subsection{Padrão para o Teste de Aceitação}
 
-Considerando que o denominado “uso parcial” do padrão
-IEEE Std 829-2008: IEEE Std for Software and System Test
-Documentation atende ao padrão ISO/IEC 12207 (incluindo
-a versão de 1995), apresentar:
+Adaptando a citação de Glen Myers \cite{Myers:2004:AST:983238} pode-se dizer que a atividade de teste de software é o processo de revisar especificações, projetos e programas com a intenção de descobrir erros. Alguns dos itens que são comuns a todos autores e pesquisadores do assunto teste de software e que descrevem os fundamentos e princípios desta atividade estão relacionados abaixo:
 
-– Uma configuração apropriada deste uso para o Teste de
-Aceitação, levando-se em conta as características do exemplo
-da disciplina, para os níveis de Planejamento, Projeto (design),
-Caso de Teste e Procedimento do Teste.
+\begin{itemize}
+\item Conforme a Lei de Pareto, 80\% dos erros podem ser localizados em 20\% do projeto, geralmente nos módulos principais do sistema;
+
+\item A atividade de teste não prova a ausência de erros, apenas a existência dos mesmos;
+\item Bons casos de teste são aqueles que encontram falhas no sistema até então não descobertas;
+\item Bons casos de teste são projetados levando em conta os requisitos do projeto;
+\item Um critério que pode ser utilizado para determinação do esforço a ser gasto na atividade de teste de software é verificar qual o grau de severidade das conseqüências advindas do seu mau funcionamento;
+\item A probabilidade de encontrar um erro numa determinada parte do sistema é proporcional ao número de erros já encontrados nesta parte;
+\item O nível de esforço previsto para testes deve levar em consideração a integridade do projeto, a integridade, criticidade, o custo por mal funcionamento, os requisitos de qualidade e acurácia especificados.
+\item A maior parte dos autores concorda que os programas devem, preferencialmente, ser testados por pessoas não envolvidas no processo de desenvolvimento, mas sim por uma equipe independente. Pode haver também a interação dos desenvolvedores com a equipe independente, justificando as decisões tomadas durante o projeto. Esta abordagem ajuda na revisão do projeto.
+
+\end{itemize}
+
+O objetivo da atividade de teste pode ser entendido da seguinte forma:
+
+\begin{itemize}
+\item no início de cada fase verificar se esta etapa do projeto reflete exatamente os requisitos e definições da fase imediatamente anterior, para com isso garantir que o produto encomendado e o gerado pela atividade de desenvolvimento do software será o mesmo através dos diferentes níveis de refinamento do projeto;
+\item verificar se não existem erros de lógica no projeto e código, no fluxo de dados, no entendimento de requisitos, de codificação, tipográficos ou de interface em todas as fases do projeto;
+\item identificar e interferir na presença do erro, iniciando-se a depuração, sendo que quanto antes for descoberta a falha, menos custoso será para adequá-la;
+\item ter em mente que, uma vez que errar é humano e atividade de desenvolvimento de software é um exercício bastante complexo, os erros existem e devem ser descobertos, portanto o sucesso em um teste consiste em descobrir os erros e corrigi-los.
+\end{itemize}
+
+\subsubsection{Configurando o uso da norma IEEE Std 829-2008 \cite{IEEE829}}
+
+De acordo com a apresentação da aula 10.
+
+\paragraph{Níves de integridade}
+
+Definição de um conjunto de características do sistema selecionadas como importantes para as partes interessadas, ajudam a definir os níveis de controle de qualidade a ser aplicado no desenvolvimento e/ou entrega do produto de software.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{softwareengineer/images/integrity-level} 
+  \caption{Descrição de nível de integridade}
+  \label{fig:integrity} 
+\end{figure}
+
+\paragraph{Master Plan}
+
+Identificação e breves explanações sobre os esforços de teste e suas finalidades, a serem detalhados em cada LTP (Level Test Plan), assim explicação do esforço de procedimentos de testes regressivos e testes de inspeção de código automatizados.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{softwareengineer/images/master-plan} 
+  \caption{Master Plan}
+  \label{fig:masterplan} 
+\end{figure}
+
+A matriz de integridade e plano de teste adotado segundo a apresentação da aula 10.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{softwareengineer/images/matrix-integrity} 
+  \caption{Matriz de integridade X Plano de teste}
+  \label{fig:matrix-integrity} 
+\end{figure}
+
+\subsubsection{Níveis de integridade e sua aplicação para cada solução do sistema “\textit{Da Gino}”}
+
+Para cada solução do restaurante \textit{Da Gino} e de acordo com a matriz de integridade e plano de teste, temos o seguinte quadro:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{softwareengineer/images/da-gino-integrity-level} 
+  \caption{Níveis de integridade e sua aplicação}
+  \label{fig:da-gino-integrity-level} 
+\end{figure}
+
+Abaixo uma visão geral dos testes no processo de desenvolvimento:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{softwareengineer/images/model-cycle-tests} 
+  \caption{Visão geral dos testes na execução do projeto}
+  \label{fig:model-cycle-tests} 
+\end{figure}
+
+Segue as responsabilidades de acordo com o nosso modelo de desenvolvimento:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{softwareengineer/images/responsibilities-1} 
+  \caption{Responsabilidades - Figura 1}
+  \label{fig:responsibilities-1} 
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{softwareengineer/images/responsibilities-2} 
+  \caption{Responsabilidades - Figura 2}
+  \label{fig:responsibilities-2} 
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{softwareengineer/images/responsibilities-3} 
+  \caption{Responsabilidades - Figura 3}
+  \label{fig:responsibilities-3} 
+\end{figure}
+
+
+
+
+
 
 \subsection{Definição do Teste de Aceitação}
 
-Supor que as características do produto de software
-estejam organizadas nas seguintes áreas de negócio do
-restaurante: recepção ao cliente, serviço de refeição,
-cozinha, pagamento e estoque.
+\begin{enumerate}
+  \item Recepção ao cliente
+  \item Serviço de refeição
+  \item Cozinha
+  \item Pagamento
+  \item Estoque
+\end{enumerate}
 
-Para cada área de negócio:
-1. Definir todos os papéis e suas responsabilidades.
-2. Definir os atributos dos papéis.
-3. Definir uma característica do produto de software.
-Para uma área de negócio selecionada:
-4. Elaborar uma história de usuário para a característica definida,
-utilizando o formato apresentado em aula.
-5. Definir dois critérios de aceitação para a história.
-6. Derivar um cenário abstrato correspondente para cada critério de
-aceitação, usando os elementos básicos da linguagem Guerkin.
-7. Derivar um cenário concreto, isto é, um caso de teste de aceitação, para
-cada cenário abstrato definido usando a linguagem Guerkin.
+\begin{enumerate}
+
+
+\item \textbf{Recepção ao cliente}
+
+\begin{enumerate}
+  \item Reserva de mesa;
+  \item Alocação de mesa;
+  \item Desalocação de reserva;
+  \item Inserir cliente na lista de espera.
+\end{enumerate}
+
+\item \textbf{Serviço de refeição}
+
+\begin{enumerate}
+  \item Anotar pedidos;
+  \item Desalocação de mesa.
+\end{enumerate}
+
+
+\item \textbf{Cozinha}
+
+\begin{enumerate}
+
+  \item Recebe pedidos registrados pelos garçons;
+  \item Atualiza estoque;
+  \item Organiza pedidos;
+  \item Libera pedido para cozinheiro;
+  \item Prepara os pratos em ordem conforme registro do pedido;
+  \item Disponibiliza para servir;
+  \item Cadastro de todas as receitas com as respectivas quantidades de ingredientes utilizados;
+  \item Indicar se receita será utilizada no almoço, jantar ou ambos;
+  \item Indicar se a receita é prato do dia (aumentar quantidade de ingredientes em estoque);
+  \item Comparação do pedido do cliente com a quantidade de ingredientes disponíveis em estoque;
+  \item Feedback ao garçom.
+\end{enumerate}
+
+\item \textbf{Pagamento}
+
+\begin{enumerate}
+  \item Cálculo do total da conta
+  \item Registro por tipo de pagamento
+\end{enumerate}
+
+\item \textbf{Estoque}
+
+\begin{enumerate}
+  \item Aceitação do pedido do cliente em relação ao estoque;
+  \item Baixa dos itens usados pela cozinha;
+  \item Feedback ao catálogo de receitas;
+  \item Cadastro dos fornecedores;
+  \item Aviso de baixa quantidade de ingredientes em estoque;
+  \item Compra de pedido de insumos baseado no histórico dos últimos 6 meses;
+  \item Lançamento dos itens no sistema.
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Papéis, Responsabilidades e Atributos}
+
+\begin{enumerate}
+
+
+  \item \textbf{Recepção ao cliente}
+
+    \begin{enumerate}
+
+      \item Recepcionista
+
+      \begin{enumerate}
+        \item Responsabilidades
+
+          \begin{enumerate}
+
+            \item Recepciona os clientes
+            \item Consulta ocupação da mesa
+            \item Realiza registro de ocupação da mesa
+            \item Conduz cliente até a mesa
+          \end{enumerate}
+
+        \item Atributos
+
+          \begin{enumerate}
+            \item Frequência regular de uso na primeira hora após abertura do restaurante para os clientes às 11:00 a.m primeira hora aprx. 70 clientes;
+            \item Alta frequência de uso entre os horários  das 12:00 p.m até às 15:00 p.m, entre 130 e 180  clientes;
+            \item Bom conhecimento no domínio de interesse.
+            \item Ótimo conhecimento em computadores e mobile.
+            \item Muitas consultas e poucas entradas de dados.
+          \end{enumerate}
+      \end{enumerate}
+
+      \item Responsável de reservas
+
+      \begin{enumerate}
+        \item Responsabilidades
+
+          \begin{enumerate}
+            \item Realiza o registro de reservas
+            \item Administra calendário de reservas pelo telefone
+          \end{enumerate}
+
+        \item Atributos
+
+          \begin{enumerate}
+
+            \item Frequência de utilização regular durante horário comercial;
+            \item Ótimo conhecimento em computadores e mobile;
+            \item Bom conhecimento do domínio.
+            \item Poucas entradas de dados;
+            \item Muitas consultas;
+          \end{enumerate}
+      \end{enumerate}
+
+    \end{enumerate}
+
+\item \textbf{Cozinha}
+
+    \begin{enumerate}
+
+      \item Auxiliar
+
+      \begin{enumerate}
+        \item Responsabilidades
+
+          \begin{enumerate}
+            \item Recebe pedidos  registrados pelos garçons
+            \item Atualiza estoque
+            \item Organiza pedidos
+            \item Libera pedido para cozinheiro.
+          \end{enumerate}
+
+        \item Atributos
+
+          \begin{enumerate}
+            \item Alta frequência de utilização durante horário comercial;
+            \item Ótimo conhecimento do domínio de interesse;
+            \item Habilidade regular com computadores e mobile;
+            \item Muitas entradas de dados;
+            \item Muitas consultas;
+            \item Alta interação interdisciplinar;
+          \end{enumerate}
+      \end{enumerate}
+
+      \item Cozinheiro
+
+      \begin{enumerate}
+        \item Responsabilidades
+
+          \begin{enumerate}
+            \item Prepara os pratos em ordem conforme registro do pedido 
+            \item Disponibiliza para servir.
+          \end{enumerate}
+
+        \item Atributos
+
+          \begin{enumerate}
+            \item Alta frequência de utilização durante os horários das 11:00 a.m às 15:00 p.m
+            \item Ótimo conhecimento do domínio de interesse;
+            \item Baixa habilidade com computadores e mobile;
+            \item Nenhuma entrada de dado;
+            \item Muitas consultas;
+          \end{enumerate}
+      \end{enumerate}
+
+    \end{enumerate}
+
+\item \textbf{Estoque}
+
+    \begin{enumerate}
+
+      
+
+      \item Controlador de estoque
+
+      \begin{enumerate}
+        \item Responsabilidades
+
+          \begin{enumerate}
+              \item Cadastra novos itens no estoque;
+              \item Atualiza quantidade de cada item entregue pelos fornecedores;
+              \item Atualiza valor do item entregue.
+          \end{enumerate}
+
+        \item Atributos
+
+          \begin{enumerate}
+              \item Frequência de uso: uma vez por semana;
+              \item Conhecimento do domínio: excelente;
+              \item Conhecimento de usuário de computador: excelente;
+              \item Metas gerais de uso: entrar com os dados de entrada e saída do estoque, assim como auxiliar o Gino quanto ao relatório de histórico de pedidos.
+
+          \end{enumerate}
+      \end{enumerate}
+
+    \end{enumerate}
+
+    \item \textbf{Serviço de refeição e pagamento}
+
+    \begin{enumerate}
+
+      \item Garçons
+
+      \begin{enumerate}
+        \item Responsabilidades
+
+          \begin{enumerate}
+              \item Realizar pedido;
+              \item Desalocação de mesas;
+              \item Verificar status do pedido;
+              \item Encerramento da conta.
+          \end{enumerate}
+
+        \item Atributos
+
+          \begin{enumerate}
+              \item Frequência de uso: um turno;
+              \item Conhecimento do domínio: médio;
+              \item Conhecimento de usuário de computador: médio;
+              \item Metas gerais de uso: poucas entradas por registro.
+          \end{enumerate}
+      \end{enumerate}
+
+    \end{enumerate}
+
+\end{enumerate}
+
+\subsubsection{Estórias de usuário}
+
+\paragraph{Alocação de mesa (Recepção ao cliente)}
+
+Eu, como um recepcionista do Restaurante Da Gino, quero alocar um cliente em uma mesa de forma que no Sistema de Disponibilidade de Mesa, a mesa em questão fique com o status de “Ocupada”.
+
+\subparagraph{Cenários Principal:}
+
+Alocar cliente em uma mesa disponível.
+
+\subparagraph{Cenário Alternativo:}
+
+Alocar cliente em uma mesa ocupada.
+
+\subparagraph{Critério de aceitação:}
+
+\begin{itemize}
+\item Alocar um cliente em determinada mesa que antes estava verde no mapa de mesas e ela passa a ficar com a cor vermelha, representando o status de ocupada.
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] que a mesa está verde 
+    \item [Quando] a recepcionista seleciona a mesa 
+    \item [Então] uma mensagem com o formato padrão é enviada a recepcionista
+    \item [E] dois botões aparecem para confirmar a operação
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item[Dado] que a mesa 1 está vazia 
+    \item[E] a cor é verde 
+    \item[Quando] a recepcionista seleciona a mesa 1
+    \item[Então] a seguinte mensagem é exibida: "Mesa 1 disponível. Deseja alocar um cliente?"
+    \item[E] e dois botões de resposta aparecem com as opções: "sim" e "não"
+  \end{description}
+
+\end{description}
+
+\item Não será possível alocar um cliente em uma mesa com um status vermelho.
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] que a mesa está vermelha 
+    \item [Quando] a recepcionista seleciona a mesa 
+    \item [Então] uma mensagem com formato padrão é enviada a recepcionista
+    \item [E] a recepcionista informa o cliente sobre a indisponibilidade da mesa
+    \item [E] a mesa continua vermelha
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] que a mesa 3 está vermelha 
+    \item [Quando] a recepcionista seleciona a mesa 3
+    \item [Então] a seguinte mensagem é exibida: "Mesa 3 ocupada. Selecione outra mesa, por favor."
+    \item [E] a recepcionista informa o cliente sobre a indisponibilidade da mesa 3
+    \item [E] a mesa 3 continua vermelha
+  \end{description}
+
+\end{description}
+
+\end{itemize}
+
+\paragraph{Anotar Pedido (Serviço de refeição)}
+
+Eu como garçom do Restaurante "Da Gino", desejo anotar os pedidos dos clientes no dispositivo móvel com integração com o sistema do restaurante de tal modo que o pedido chegue instantaneamente na cozinha.
+
+\subparagraph{Cenário Principal:}
+
+Anotação do pedido com sucesso.
+
+\subparagraph{Cenário Alternativo:}
+
+Pedido não disponível para solicitação.
+
+\subparagraph{Critérios de aceitação:}
+
+\begin{itemize}
+\item Verificar se há ingredientes disponíveis para atender a opção escolhida.
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] a disponibilidade de ingredientes para o prato selecionado.
+    \item [Quando] houver confirmação do recebimento do pedido da cozinha.
+    \item [Então] o valor é lançado na mesa do cliente.
+    \item [E] são dadas as baixas dos ingredientes no controle de estoque.
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] a disponibilidade de sorvete de creme
+    \item [Quando] a cozinha confirma o recebimento do pedido 43 da mesa 3
+    \item [Então] o valor de R\$ 15,00 é lançado na conta da mesa 3
+    \item [E] 150 gramas de sorvete de creme é debitado do estoque
+  \end{description}
+
+\end{description}
+
+\item Verificar se o pedido foi encaminhado corretamente para a cozinha através de confirmação de recebimento do pedido.
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] a escolha do prato pelo cliente.
+    \item [E] o garçom emite o lançamento do pedido para cozinha
+    \item [Quando] não houver ingrediente disponível para o preparo
+    \item [Então] uma mensagem com formato padrão é enviada ao garçom
+    \item [E] o garçom informa a indisponibilidade ao cliente
+    \item [E] o pedido é cancelado
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] que o cliente da mesa 3 pede uma torta de morango
+    \item [E] o garçom efetua o lançamento do pedido 56 de torta de morando para a cozinha
+    \item [Quando] não houver torta de morango disponível
+    \item [Então] a seguinte mensagem é exibida: "Torta de morango não disponível."
+    \item [E] o garçom informa o cliente da mesa 3 sobre a indisponibilidade da torta de morango
+    \item [E] o pedido 56 é cancelado
+  \end{description}
+
+\end{description}
+\end{itemize}
+
+\paragraph{Comparar pedido de cliente com estoque (Cozinha)}
+
+Eu como auxiliar, eu quero comparar os pedidos com as receitas e com a quantidade de ingredientes em estoque, de tal modo que sistema me avise se está acabando algum ingrediente.
+
+\subparagraph{Cenários Principal:}
+
+Comparação indica que é possível fazer o prato com sucesso.
+
+\subparagraph{Cenário Alternativo:}
+
+Comparação indica que é possível fazer o prato com sucesso, mas um ingrediente está acabando ou acabou.
+
+\subparagraph{Critérios de aceitação:}
+
+\begin{itemize}
+\item O sistema compara o pedido do cliente com a receita padronizada e verifica se é possível fazer o prato. 
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] a escolha do prato pelo cliente.
+    \item [E] a receita define a quantidade de ingredientes necessários
+    \item [Quando] não houver ingrediente disponível para o preparo
+    \item [Então] uma mensagem com formato padrão é enviada ao auxiliar
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] que o cliente da mesa 3 pede creme de papaya
+    \item [E] a receita define 1/2 mamão
+    \item [E] 70 gramas de sorvete de creme
+    \item [E] 50 ml de cassis
+    \item [Quando] não houver 1/2 mamão
+    \item [Então] a seguinte mensagem é exibida ao auxiliar: "1/2 mamão não disponível."
+  \end{description}
+
+\end{description} 
+\item O sistema indica se algum ingrediente está acabando ou está indisponível.
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] um ingrediente
+    \item [E] o mínimo necessário do ingrediente estiver cadastrado
+    \item [Quando] atingir o mínimo do ingrediente
+    \item [Então] uma mensagem com formato padrão é enviada ao auxiliar
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] o sorvete de creme
+    \item [E] o mínimo é 2 kg
+    \item [Quando] o sorvete de creme atingir a quantidade 2kg
+    \item [Então] a seguinte mensagem é exibida ao auxiliar: "Sorvete de creme está acabando. Restam apenas 2kg."
+  \end{description}
+
+\end{description} 
+
+\end{itemize}
+
+\paragraph{Fechar a conta da mesa (Pagamento)}
+
+Eu como garçom do Restaurante "Da Gino", desejo poder fechar a conta de uma mesa e que imediatamente seja possível imprimir o cupom fiscal para levar ao cliente.
+
+\subparagraph{Cenário Principal:}
+
+Cálculo do total da conta e impressão do cupom fiscal pela impressora fiscal.
+
+\subparagraph{Cenário Alternativo:}
+
+Lista de pedidos da mesa está vazia.
+
+\subparagraph{Critérios de aceitação:}
+
+\begin{itemize}
+\item Verificar se a mesa está ocupada
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] que a mesa está vazia
+    \item [Quando] o garçom tenta efetuar o fechamento da conta
+    \item [Então] uma mensagem com formato padrão é enviada ao garçom
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] que a mesa 4 está vazia
+    \item [Quando] o garçom clica no botão "Fechar conta"
+    \item [Então] a seguinte mensagem é exibida: "Mesa 4 está vazia."
+  \end{description}
+
+\end{description}
+
+\item Verificar se há pedidos
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] que a mesa efetuou pedidos
+    \item [E] o cliente solicita o fechamento da conta
+    \item [Quando] o garçom efetua o fechamento da conta da mesa
+    \item [Então] uma mensagem com formato padrão é enviada ao garçom
+    \item [E] dois botões aparecem para confirmar a operação
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] que o cliente da mesa 3 pediu uma torta de morango
+    \item [E] o cliente da mesa 3 solicita o fechamento da conta
+    \item [Quando] o garçom clica no botão "Fechar conta" para a mesa 3
+    \item [Então] a seguinte mensagem é exibida: "Tem certeza que desejar fechar a conta da mesa 3?"
+    \item [E] dois botões de resposta aparecem com as opções: "Sim" e "Não"
+  \end{description}
+
+\end{description}
+
+\end{itemize}
+
+\paragraph{Compra de pedido de insumos baseado no histórico dos últimos 6 meses (Estoque)}
+
+Eu como um controlador de estoque do restaurante “Da Gino”, quero realizar uma compra de insumo baseado no histórico dos últimos seis meses para suprir o estoque de modo que a realização de novos pedidos pelos clientes não possam ser bloqueados por falta deste suprimento.
+
+\subparagraph{Cenário Principal:}
+
+Seleciona o produto na lista de insumos cadastrados no Sistema e verificar a média de compra.
+
+\subparagraph{Cenário Alternativo:}
+
+Produto desejado não está na lista de produtos cadastrados no sistema.
+
+\subparagraph{Critérios de Aceitação:}
+
+\begin{itemize}
+\item Verificar se produto está cadastrado no sistema.
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] um produto que não está cadastrado no sistema
+    \item [Quando] o controlador de estoque procurar por este produto
+    \item [Então] uma mensagem com formato padrão é enviada ao controlador de estoque
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] que brocólis não está cadastrado no sistema
+    \item [Quando] o controlador de estoque procura pelo termo "Brócolis"
+    \item [Então] a seguinte mensagem é exibida: "Produto não encontrado"
+  \end{description}
+
+\end{description}
+
+\item Cadastrar o produto no sistema e receber confirmação do cadastro com sucesso.
+
+\begin{description}
+
+  \item [Cenário Abstrato]
+  \begin{description}
+    \item
+    \item [Dado] que o campo nome do produto está preenchido
+    \item [E] que a quantidade está preenchida
+    \item [E] o valor do produto está preenchido
+    \item [Quando] o controlador de estoque clicar no botão para efetuar o cadastro
+    \item [Então] uma mensagem com formato padrão é enviada ao controlador de estoque
+  \end{description}
+
+  \item [Cenário Concreto]
+  \begin{description}
+    \item
+    \item [Dado] que o campo nome do produto foi preenchido com o nome "Sorvete de creme"
+    \item [E] que a quantidade foi preenchida com o valor "15kg"
+    \item [E] o valor do produto foi preenchido com "R\$ 50,00"
+    \item [Quando] o controlador de estoque clicar no botão "Salvar"
+    \item [Então] uma mensagem é exibida: "Cadastro efetuado com sucesso"
+  \end{description}
+\end{description}
+
+\end{itemize}
+
+
+
+
+
+
+
 
 
 
