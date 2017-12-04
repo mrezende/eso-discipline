@@ -931,16 +931,307 @@ modelos e planos adotados em todo o trabalho.
 \section{Gerência de configuração de software}
 \label{sec:gerenciaconfig}
 
-\large{Seção gerência de configuração de software - alex}
+Gerência de configuração de software, gerência de configuração ou ainda gestão de configuração de software é uma área da engenharia de software responsável por fornecer o apoio para o desenvolvimento de software. Suas principais atribuições são o controle de versão, o controle de mudança e a auditoria das configurações. Roger Pressman, em seu livro Software Engineering: A Practitioner's Approach, especifica que a gerência de configuração de software (GCS) é o:
+
+\begin{quote}
+“conjunto de atividades projetadas para controlar as mudanças pela identificação dos produtos do trabalho que serão alterados, estabelecendo um relacionamento entre eles, definindo o mecanismo para o gerenciamento de diferentes versões destes produtos, controlando as mudanças impostas, e auditando e relatando as mudanças realizadas."
+\end{quote}
 
 \subsection{Plano de gerência de configuração de software}
 
-Definir um plano de gerência de configuração de software
-para o modelo de processo definido em 2.1.3 e que esteja
-em conformidade com o padrão IEEE Std 828-2005: IEEE
-Standard for Software Configuration Management Plans ou
-o IEEE Std 828-2012: IEEE Standard for Configuration
-Management in Systems and Software Engineering.
+\subsubsection{Introdução}
+
+O Plano de Gerência de Configuração apresenta todas as tarefas do Gerenciamento de Configuração e mudanças no projeto, para garantir a sua integridade e o mantendo o domínio das mudanças ocorridas durante o desenvolvimento. 
+
+\paragraph{Definições, Acrônimos e Abreviações}
+
+Segue as definições utilizadas no plano de gerência de configuração:
+
+\begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | l |}
+        \hline
+        \textbf{Termo} & \textbf{Significado} \\ \hline
+        Scrum & Metodologia ágil para gestão e planejamento de projetos de software \\ \hline
+        RUP & Rational Unified Process \\ \hline
+        IDE & Ambiente de Desenvolvimento Integrado \\ \hline
+        GC & Gerência de Configuração \\ \hline
+        CCM & Comitê para o Controle de Mudanças \\ \hline
+        SM & Solicitação de mudança \\ \hline
+        Baseline & Conjunto de itens de configuração que conseguiram um estado comprovado de estabilidade. \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Definições, Acrônimos e Abreviações}
+    \end{table}
+
+\subsubsection{Gerenciamento de Configuração de Software}
+
+\paragraph{Organização, Responsabilidades e Interfaces} 
+
+No Scrum não tem perfil definido para Gerente de Configuração. Em contrapartida, o Scrum Team deve executar todo o trabalho necessário para concluir a Sprint, incluindo as atividades de gerência de configuração.
+
+No modelo tradicional de desenvolvimento, o gerente de configuração é a parte central do processo de desenvolvimento. Ele é responsável pelo trabalho de deploy, verificar se os artefatos estão sob controle, verifica se todas partes corretas do sistema foram incluídas na versão.
+
+No Scrum, as atividades diárias de um gerente de configuração é separado em partes para membros do time. Uma parte é executada pelo Product Owner e outra parte é executada pelo Scrum Team (e talvez uma parte pelo Scrum Master).
+
+No nosso caso, o gerente de configuração será um membro permanente do time. Ele irá ser o expert em gerência de configuração, porém irá contribuir também no projeto (design), nos testes, código-fonte, documentação - tudo que é necessário para alcançar o objetivo da Sprint. Ele irá educar os outros membros do time para aprenderem a fazer o deploy e build do sistema.
+
+\paragraph{Artefatos da Gerência de Configuração x Atividades da Gerência de Configuração} 
+
+As atividades da Gerência de Configuração estão definidas no IEEE Std 828-2012 \cite{6170935} e são divididas em GCOs, que serão abrangidos e controlados nos artefatos gerados. Como o Scrum não contempla soluções nesta área explicitamente, adaptações foram feitas para que a gerência de configuração fosse implementada no processo.
+
+\begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | l |}
+        \hline
+        \textbf{Artefatos} & \textbf{Atividades} \\ \hline
+        Plano de Configuração & GCO1, GCO2 \\ \hline
+        Repositório organizado para os Itens de Configuração & GCO1, GCO2, GCO3, GCO5 \\ \hline
+        Baselines & GCO3 \\ \hline
+        Banco de dados de Requisições de Mudança (Issues) & GCO4, GCO5 \\ \hline
+        Relatórios de Auditorias da Configuração & GCO5, GCO6, GCO7 \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Artefatos da Gerência de Configuração x Atividades da Gerência de Configuração}
+    \end{table}
+ 
+  
+
+ \subsubsection{Identificação da Configuração}
+
+ \paragraph{Métodos de Identificação}
+
+ Todos os artefatos gerados, com exceção de código fonte, neste projeto terão a seguinte nomenclatura:
+
+\begin{myprop}
+\textit{DaGino\_<TEXTO\_LIVRE> - <TIPO\_ART>.<EXT>}
+\end{myprop}
+
+
+\begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Identificador} & \textbf{Descrição} \\ \hline
+        **<TEXTO\_LIVRE>** (Não obrigatório) & Texto livre que identifique unicamente o arquivo. Ex.: Reunião 01. \\ \hline
+        **<TIPO\_ART>** & Tipo do artefato. Ex: Ata, EAP, Diagrama de Caso de Uso, etc. \\ \hline
+        **<EXT>** & A extensão do arquivo. Ex.: doc, xls, java, etc. \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Métodos de Identificação}
+    \end{table}
+
+\paragraph{Baselines do Projeto}
+
+Para que se dê a criação de uma baseline, é necessário que o gerente de configuração faça uma Auditoria de Configuração primeiro e autorize a criação dessa baseline, haja vista que o mesmo estará envolvido em todas as etapas do projeto, sendo este responsável por preparar o ambiente em que os artefatos serão versionados.
+
+\subparagraph{Tag}
+
+As baselines, quando criadas, conterão todo o repositório Git, incluindo código fonte, diagramas, atas de reunião, etc. e serão numeradas com o seguinte formato, a partir do número 0 (zero):
+
+\begin{myprop}
+<major>.<minor>.<patch>
+\end{myprop}
+
+E serão construídas com as seguintes orientações:
+
+Quebra de compatibilidade com versões anteriores, avança o <major>.
+Adição de novas funcionalidades sem quebrar compatibilidade com versões anteriores, avança o <minor>.
+Correção de bugs e outras alterações, avança <patch>.
+Adotaremos como referência o site do semver na Internet \url{https://semver.org/}.
+
+\subparagraph{Notas de release}
+
+Ao criar uma nova baseline no GitHub, há opção de colocar notas de release e anexar um arquivo executável do projeto em questão. Por exemplo, no aplicativo utilizado no serviço de refeição pelos garçons, um arquivo .apk construído a partir do código fonte do dado baseline pode ser o anexo, e as notas de release deverão ser feitas juntamente com a equipe de Manutenção de Software em texto na linguagem Markdown no seguinte esqueleto:
+
+\begin{myprop}
+\#\#\# Histórico de mudanças \\
+- *[Novo: (...)]* \\
+- *[Correção: (...)]* \\
+- *[Melhoria: (...)]* \\
+- *[Menor: (...)]* 
+\end{myprop}
+
+A ordem das categorias de mudanças devem ser obedecidas conforme texto acima. Caso o aplicativo do serviço de refeição venha a ser hospedado na loja de aplicativos da Google, a Play Store, as mesmas notas de release poderão ser usadas ao publicar novas atualizações do aplicativo.
+
+\subsubsection{Estrutura do Repositório de Versões}
+
+O GitHub é uma plataforma de hospedagem de projetos de software que oferece, além de armazenamento de repositórios GIT e/ou SVN, uma área do repositório específica para documentação online (Portal Wiki) e outra para controlar tarefas e mudanças no projeto (issues). A fim de se ter melhor aproveitamento da plataforma e agilidade no ciclo de vida Scrum do projeto do Restaurante \textit{Da Gino}, todos os artefatos de software e o gerenciamento do projeto será feito no GitHub e/ou em ferramentas integradas ao GitHub.
+
+\paragraph{Repositório principal}
+
+O repositório do aplicativo do serviço de refeição \textit{Da Gino}, podendo ser controlado pelo sistema de controle de versão GIT ou SVN, deve ter os seguintes artefatos nos respectivos diretórios relacionados abaixo (em ordem alfabética):
+
+\begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Diretório} & \textbf{Conteúdo} \\ \hline
+        . & README do repositório \\ \hline
+        DaGinoSerRef & Código fonte com Javadoc - projeto do Android Studio \\ \hline
+        ./reuniões & Atas de reuniões em formato Markdown (.md) \\ \hline
+        Processo & Documento em PDF do Processo de Desenvolvimento de Software da empresa fictícia IPTec \\ \hline
+        Projeto & Projeto Diretório relacionado à artefatos diversos do projeto. \\ \hline
+        ./anexos & Arquivos de imagem de itens exportados: Diagrama de Caso de Uso do \textit{DaGino}; Diagrama de Classes; Diagrama de Componentes; Diagrama de Implantação; Referências das imagens dos diagramas - README \\ \hline
+        ./anexos/ciclo de vida & Arquivos de imagem do Ciclo de Vida do projeto \\ \hline
+        ./anexos/registros de aprovação & Arquivos de imagem com assinaturas à mão de integrantes da equipe \\ \hline
+        ./anexos/ciclo de vida & Arquivos de imagem do Ciclo de Vida do projeto \\ \hline
+        ./anexos/ciclo de vida & Arquivos de imagem do Ciclo de Vida do projeto \\ \hline
+        ./extra & Itens diversos relacionados ao projeto que não se encaixa em nenhuma das categorias montadas no repositório: Fotos, Vídeos, Apresentações, etc.: Protótipo de Interface Gráfica (GUI) do aplicativo \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Repositório principal}
+    \end{table}
+
+\paragraph{Repositório de documentação (Wiki)}
+
+O Wiki do \textit{Da Gino}, controlado apenas por GIT e pelo GitHub de forma online, não tem divisão por diretórios, pelo fato de que este repositório tem apenas arquivos de texto na linguagem de marcação Markdown (.md) convertidos automaticamente para páginas HTML pelo GitHub para exibição online no navegador de Internet. Como o GitHub cria uma abstração de que é um website a documentação do repositório, não é exibido o formato de hierarquia de arquivos e pastas como no repositório principal.
+
+Para estruturação do Wiki, a página principal (Home) e a barra lateral do Wiki terão a divisão feita por "Portais", a exemplo dos Portais do Wikipédia, mas para áreas de conhecimento da Engenharia de Software aplicadas no projeto:
+
+
+\begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Gerência de Projeto} & \textbf{Documentação relacionada ao gerenciamento do projeto} \\ \hline
+        Planejamento & Plano de projeto \\ \hline
+        Procedimentos & Relatórios de Monitoramento \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Gerência de projeto}
+    \end{table}
+
+  
+
+\begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Gerência de Configuração} & \textbf{Documentação relacionada ao gerenciamento de itens de configuração do projeto} \\ \hline
+        Planejamento & Plano de Gerência de Configuração \\ \hline
+        Procedimentos & Relatórios de Auditorias de Configuração \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Gerência de configuração}
+    \end{table}
+
+\begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Engenharia de Requisitos} & \textbf{Documentação relacionada aos artefatos de elaboração do produto em alto nível} \\ \hline
+        Planejamento & Documento de Especificação de Objetivos e Requisitos (EOR) \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Engenharia de requisitos}
+    \end{table}
+
+ 
+
+\begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Verificação e Validação (V\&V)} & \textbf{Documentação relacionada às atividades de V\&V no projeto} \\ \hline
+        Planejamento & Plano de Verificação e Validação \\ \hline
+        Procedimentos & Documento de Procedimentos (para cada artefato escolhido no Plano para passar por V\&V - exceto Planos Gerenciais); Relatório de Resultados (para cada artefato escolhido no Plano para passar por V\&V - exceto Planos Gerenciais) \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Verificação e Validação}
+    \end{table}
+
+
+    \begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Manutenção} & \textbf{Documentação relacionada às atividades de Manutenção de software no projeto} \\ \hline
+        Planejamento & Plano de Manutenção \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Verificação e Validação}
+    \end{table}
+
+    \begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Garantia da Qualidade} & \textbf{Documentação relacionada às atividades de Garantia da Qualidade no projeto} \\ \hline
+        Planejamento & Plano de Garantia da Qualidade \\ \hline
+        Procedimentos & Relação de não conformidades (para cada Plano Gerencial escolhido no Plano de GQA para passar por Avaliação); Relatório de Avaliação (para cada Plano Gerencial escolhido no Plano de GQA para passar por Avaliação) \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Verificação e Validação}
+    \end{table}
+
+
+    \begin{table}[H]
+      \begin{center}
+        \begin{tabular}{| l | p{6cm} |}
+        \hline
+        \textbf{Templates} & \textbf{Modelos de documentos diversos para uso em todo o repositório do projeto} \\ \hline
+        Gerência de Projeto & Plano de Projeto; Relatório de Monitoramento; Agenda de Reunião; Ata de Reunião \\ \hline
+        Gerência de Configuração & Plano de Gerenciamento de Configuração; Auditoria de Configuração \\ \hline
+        Engenharia de Requisitos & Documento de Especificação de Objetivos e Requisitos (EOR) \\ \hline
+        Verificação e Validação (V\&V) & Plano de Verificação e Validação; Documento de Procedimentos; Relatório de Resultados \\ \hline
+        Manutenção & Plano de Manutenção; Documento de Solicitação de Mudança; Documento de Análise de Viabilidade e Riscos; Documento de Controle e Correção; Notas de Release; Documento de Migração \\ \hline
+        Garantia da Qualidade & Plano de Garantia da Qualidade; Relatório de avaliação; Relação de não conformidades \\ \hline
+        \end{tabular}
+      \end{center}
+    \caption{Verificação e Validação}
+    \end{table}
+
+\subsubsection{Controle de Configuração e Mudança}
+
+\paragraph{Processamento e Aprovação de Solicitações de Mudança}
+
+O repositório é mantido e controlado pelo Scrum Team. A plataforma de Issues do GitHub é aonde serão feitas e registradas todas as atividades em relação à mudanças no software. As mesmas issues podem ser visualizadas na ferramenta de Gerenciamento de Projetos waffle.io \url{https://waffle.io/}.
+
+Quando alguém cria uma nova issue (reporta um bug, solicita uma nova funcionalidade), é feita uma análise de viabilidade e riscos. Se a mudança solicitada não é viável, é informada ao autor da solicitação a inviabilidade e é fechada a issue; caso contrário, os Mantenedores planejam e executam a mudança e o Gerente de Configuração e o de Verificação e Validação monitoram o procedimento. Caso a mudança feita tenha sido um sucesso (revisada), o gerente de configuração prepara mais uma release (baseline) do software.
+
+\paragraph{Comitê de Controle de Mudança (CCB)}
+
+No Scrum, não há Comitê de Controle de Mudança como no modelo tradicional de GCM.
+
+As solicitações de mudança do Product Backlog são discutidos, priorizados, e decidido pelo Product Owner na reunião do Sprint Planning. O Scrum Team escolhe os itens do topo e adicionam no Sprint Backlog. A quantidade de itens é baseado no tamanho da Sprint e complexidade das mudanças/funcionalidades. No caso do Scrum, o Comitê de Controle de Mudança é mais "\textit{light}". As mesmas atividades estão presentes incluindo análise, coordenação, aprovação, reprovação, porém é menos formal.
+
+Um Template para issue de Solicitação de Mudança (SM) está disponível no Wiki do GitHub para padronizar as informações necessárias para uma solicitação de mudança.
+
+A solicitação de mudança (SM) deve ser deve ser registrada nas Issues do GitHub, assim como as Análises de Viabilidade e Riscos e o Planejamento de mudanças, disponível no repositório do projeto. Algumas informações são necessárias para a devida criação do solicitação.
+
+\subsubsection{Estimativa do Status de Configuração}
+
+\paragraph{Processo de Armazenamento de Mídia e Liberação do Projeto}
+
+O repositório do projeto deverá ser "clonado" por todos os integrantes da equipe.
+
+\paragraph{Relatórios e Auditorias}
+
+A auditoria é feita durante a reunião de Sprint Review. O Spring Backlog contém todos os itens necessários a entrega e caso o ciclo seja de 2 a 4 semanas, a lista é normalmente pequena.
+O time demonstra cada estória no Sprint Backlog para o Product Owner e ele (ela) pode ver se o item satisfaz os requisitos. Portanto, a auditoria de configuração é feita de forma informal e pessoalmente.
+
+\subsubsection{Marcos}
+
+Os principais marcos do projeto são os de último dia de sprint, em que há a criação da baseline do repositório de controle de versão e a realização das cerimônias de final de sprint do Scrum. 
+
+O Plano de Gerência de Configuração é alterado nos seguintes casos:
+
+\begin{itemize}
+\item O repositório de versões não está atendendo as necessidades dos integrantes da equipe;
+\item O Plano não foi aprovado pela V\&V e precisa ser refatorado.
+\item Quando for necessária a refatoração deste Plano, deve ser criada uma nova issue de solicitação de mudança no Plano de GCS.
+\end{itemize}
+
+\subsubsection{Treinamento e Recursos}
+
+\begin{itemize}
+\item No README do repositório principal há um guia rápido para utilização do sistema de controle de versão Git;
+\item No site do GitHub há um tutorial iterativo para aprender a usar o Git em 15 minutos, criado pelo Code School: \url{https://try.github.io}
+\item A documentação online do Git tem diversos conteúdos a respeito de controle de versão e gerência de configuração de forma completa, mas didática: \url{http://git-scm.com/doc}
+\item Nos guias online do GitHub tem um guia rápido para aprendizagem da linguagem de marcação Markdown: \url{https://guides.github.com/features/mastering-markdown/}
+\end{itemize}
+
 
 \subsection{Tarefas e papéis}
 

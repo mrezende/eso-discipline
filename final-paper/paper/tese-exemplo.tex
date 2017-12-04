@@ -27,6 +27,10 @@
 \usepackage{titletoc}
 %\usepackage[bf,small,compact]{titlesec} % cabe?lhos dos t?ulos: menores e compactos
 
+\usepackage{mdframed}   % for framing
+
+
+
 \usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
 \usepackage[usenames,svgnames,dvipsnames]{xcolor}
 \usepackage[a4paper,top=2.54cm,bottom=2.0cm,left=2.0cm,right=2.54cm]{geometry} % margens
@@ -85,6 +89,22 @@ framexrightmargin=10pt
 }
 
 % ---------------------------------------------------------------------------- %
+
+%-------------- highlights anything which is important using a greyish color background --%%
+
+
+% \begin{myprop}
+%  text here
+% \end{myprop}
+
+
+
+
+\newmdenv[%
+linecolor=gray,leftmargin=60,%
+rightmargin=40,
+backgroundcolor=gray!40]{myprop}
+
 
 
 %---------- title format paragraph
