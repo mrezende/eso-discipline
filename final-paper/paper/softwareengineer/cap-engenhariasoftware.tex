@@ -934,14 +934,131 @@ modelos e planos adotados em todo o trabalho.
 Gerência de configuração de software, gerência de configuração ou ainda gestão de configuração de software é uma área da engenharia de software responsável por fornecer o apoio para o desenvolvimento de software. Suas principais atribuições são o controle de versão, o controle de mudança e a auditoria das configurações. Roger Pressman, em seu livro Software Engineering: A Practitioner's Approach, especifica que a gerência de configuração de software (GCS) é o:
 
 \begin{quote}
-“conjunto de atividades projetadas para controlar as mudanças pela identificação dos produtos do trabalho que serão alterados, estabelecendo um relacionamento entre eles, definindo o mecanismo para o gerenciamento de diferentes versões destes produtos, controlando as mudanças impostas, e auditando e relatando as mudanças realizadas."
+“conjunto de atividades projetadas para controlar as mudanças pela identificação dos produtos do trabalho que serão alterados, estabelecendo um relacionamento entre eles, definindo o mecanismo para o gerenciamento de diferentes versões destes produtos, controlando as mudanças impostas, e auditando e relatando as mudanças realizadas." \cite{wikiconfig:16}
 \end{quote}
 
 \subsection{Plano de gerência de configuração de software}
 
 \subsubsection{Introdução}
 
-O Plano de Gerência de Configuração apresenta todas as tarefas do Gerenciamento de Configuração e mudanças no projeto, para garantir a sua integridade e o mantendo o domínio das mudanças ocorridas durante o desenvolvimento. 
+O Plano de Gerência de Configuração apresenta todas as tarefas do Gerenciamento de Configuração e mudanças no projeto, para garantir a sua integridade e o mantendo o domínio das mudanças ocorridas durante o desenvolvimento \cite{moraes:16}.
+
+\subsubsection{Gerenciamento de Configuração de Software}
+
+\paragraph{Organização, Responsabilidades e Interfaces} 
+
+No Scrum não tem perfil definido para Gerente de Configuração. Em contrapartida, o Scrum Team deve executar todo o trabalho necessário para concluir a Sprint, incluindo as atividades de gerência de configuração.
+
+No modelo tradicional de desenvolvimento, o gerente de configuração é a parte central do processo de desenvolvimento. Ele é responsável pelo trabalho de deploy, verificar se os artefatos estão sob controle, verifica se todas partes corretas do sistema foram incluídas na versão.
+
+No Scrum, as atividades diárias de um gerente de configuração é separado em partes para membros do time. Uma parte é executada pelo Product Owner e outra parte é executada pelo Scrum Team (e talvez uma parte pelo Scrum Master).
+
+\paragraph{Artefatos da Gerência de Configuração x Atividades da Gerência de Configuração} 
+
+As atividades da Gerência de Configuração estão definidas no IEEE Std 828-2012 \cite{6170935} e são divididas em GCOs, que serão abrangidos e controlados nos artefatos gerados. Como o Scrum não contempla soluções nesta área explicitamente, adaptações foram feitas para que a gerência de configuração fosse implementada no processo.
+
+
+ \subsubsection{Identificação da Configuração}
+
+ \paragraph{Métodos de Identificação}
+
+ Todos os artefatos gerados, com exceção de código fonte, terão uma nomenclatura a ser definida.
+
+
+
+\paragraph{Baselines do Projeto}
+
+Para que se dê a criação de uma baseline, é necessário que o gerente de configuração faça uma Auditoria de Configuração primeiro e autorize a criação dessa baseline, haja vista que o mesmo estará envolvido em todas as etapas do projeto, sendo este responsável por preparar o ambiente em que os artefatos serão versionados.
+
+\subparagraph{Tag}
+
+As baselines, quando criadas, conterão todo o repositório Git, incluindo código fonte, diagramas, atas de reunião, etc. e serão numeradas com o seguinte formato, a partir do número 0 (zero):
+
+\begin{myprop}
+<major>.<minor>.<patch>
+\end{myprop}
+
+E serão construídas com as seguintes orientações:
+
+Quebra de compatibilidade com versões anteriores, avança o <major>.
+Adição de novas funcionalidades sem quebrar compatibilidade com versões anteriores, avança o <minor>.
+Correção de bugs e outras alterações, avança <patch>.
+Adotaremos como referência o site do semver na Internet \url{https://semver.org/}.
+
+\subparagraph{Notas de release}
+
+Ao criar uma nova baseline no GitHub, há opção de colocar notas de release e anexar um arquivo executável do projeto em questão. Por exemplo, no aplicativo utilizado no serviço de refeição pelos garçons, um arquivo .apk construído a partir do código fonte do dado baseline pode ser o anexo, e as notas de release deverão ser feitas juntamente com a equipe de Manutenção de Software em texto na linguagem Markdown no seguinte esqueleto:
+
+\begin{myprop}
+\#\#\# Histórico de mudanças \\
+- *[Novo: (...)]* \\
+- *[Correção: (...)]* \\
+- *[Melhoria: (...)]* \\
+- *[Menor: (...)]* 
+\end{myprop}
+
+A ordem das categorias de mudanças devem ser obedecidas conforme texto acima. Caso o aplicativo do serviço de refeição venha a ser hospedado na loja de aplicativos da Google, a Play Store, as mesmas notas de release poderão ser usadas ao publicar novas atualizações do aplicativo.
+
+\subsubsection{Estrutura do Repositório de Versões}
+
+O GitHub é uma plataforma de hospedagem de projetos de software que oferece, além de armazenamento de repositórios GIT e/ou SVN, uma área do repositório específica para documentação online (Portal Wiki) e outra para controlar tarefas e mudanças no projeto (issues). A fim de se ter melhor aproveitamento da plataforma e agilidade no ciclo de vida Scrum do projeto do Restaurante \textit{Da Gino}, todos os artefatos de software e o gerenciamento do projeto será feito no GitHub e/ou em ferramentas integradas ao GitHub.
+
+\paragraph{Repositório principal}
+
+O repositório do aplicativo do serviço de refeição \textit{Da Gino}, podendo ser controlado pelo sistema de controle de versão GIT ou SVN.
+
+\paragraph{Repositório de documentação (Wiki)}
+
+O Wiki do \textit{Da Gino}, controlado apenas por GIT e pelo GitHub de forma online, não tem divisão por diretórios, pelo fato de que este repositório tem apenas arquivos de texto na linguagem de marcação Markdown (.md) convertidos automaticamente para páginas HTML pelo GitHub para exibição online no navegador de Internet. Como o GitHub cria uma abstração de que é um website a documentação do repositório, não é exibido o formato de hierarquia de arquivos e pastas como no repositório principal.
+
+\subsubsection{Controle de Configuração e Mudança}
+
+\paragraph{Processamento e Aprovação de Solicitações de Mudança}
+
+O repositório é mantido e controlado pelo Scrum Team. A plataforma de Issues do GitHub é aonde serão feitas e registradas todas as atividades em relação à mudanças no software. As mesmas issues podem ser visualizadas na ferramenta de Gerenciamento de Projetos waffle.io \url{https://waffle.io/}.
+
+Quando alguém cria uma nova issue (reporta um bug, solicita uma nova funcionalidade), é feita uma análise de viabilidade e riscos. Se a mudança solicitada não é viável, é informada ao autor da solicitação a inviabilidade e é fechada a issue; caso contrário, os Mantenedores planejam e executam a mudança e o Gerente de Configuração e o de Verificação e Validação monitoram o procedimento. Caso a mudança feita tenha sido um sucesso (revisada), o gerente de configuração prepara mais uma release (baseline) do software.
+
+\paragraph{Comitê de Controle de Mudança (CCB)}
+
+No Scrum, não há Comitê de Controle de Mudança como no modelo tradicional de GCM.
+
+As solicitações de mudança do Product Backlog são discutidos, priorizados, e decidido pelo Product Owner na reunião do Sprint Planning. O Scrum Team escolhe os itens do topo e adicionam no Sprint Backlog. A quantidade de itens é baseado no tamanho da Sprint e complexidade das mudanças/funcionalidades. No caso do Scrum, o Comitê de Controle de Mudança é mais "\textit{light}". As mesmas atividades estão presentes incluindo análise, coordenação, aprovação, reprovação, porém é menos formal.
+
+
+\subsubsection{Estimativa do Status de Configuração}
+
+\paragraph{Processo de Armazenamento de Mídia e Liberação do Projeto}
+
+O repositório do projeto deverá ser "clonado" por todos os integrantes da equipe.
+
+\paragraph{Relatórios e Auditorias}
+
+A auditoria é feita durante a reunião de Sprint Review. O Spring Backlog contém todos os itens necessários a entrega e caso o ciclo seja de 2 a 4 semanas, a lista é normalmente pequena.
+O time demonstra cada estória no Sprint Backlog para o Product Owner e ele (ela) pode ver se o item satisfaz os requisitos. Portanto, a auditoria de configuração é feita de forma informal e pessoalmente.
+
+\subsubsection{Marcos}
+
+Os principais marcos do projeto são os de último dia de sprint, em que há a criação da baseline do repositório de controle de versão e a realização das cerimônias de final de sprint do Scrum. 
+
+O Plano de Gerência de Configuração é alterado nos seguintes casos:
+
+\begin{itemize}
+\item O repositório de versões não está atendendo as necessidades dos integrantes da equipe;
+\item O Plano não foi aprovado pela V\&V e precisa ser refatorado.
+\item Quando for necessária a refatoração deste Plano, deve ser criada uma nova issue de solicitação de mudança no Plano de GCS.
+\end{itemize}
+
+\subsubsection{Treinamento e Recursos}
+
+Serão disponibilizados links, materiais e treinamentos de acordo com o nível de maturidade e conhecimento da equipe.
+
+
+\subsection{Tarefas e papéis}
+
+\subsubsection{Introdução}
+
+O Plano de Gerência de Configuração para o projeto \textit{Da Gino} apresenta todas as tarefas do Gerenciamento de Configuração e mudanças no projeto, para garantir a sua integridade e o mantendo o domínio das mudanças ocorridas durante o desenvolvimento \cite{moraes:16}.
 
 \paragraph{Definições, Acrônimos e Abreviações}
 
@@ -1025,6 +1142,14 @@ As atividades da Gerência de Configuração estão definidas no IEEE Std 828-20
 
 Para que se dê a criação de uma baseline, é necessário que o gerente de configuração faça uma Auditoria de Configuração primeiro e autorize a criação dessa baseline, haja vista que o mesmo estará envolvido em todas as etapas do projeto, sendo este responsável por preparar o ambiente em que os artefatos serão versionados.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{softwareengineer/images/baseline} 
+  \caption{Baseline de acordo com a apresentação da aula 10 - sem hotfix}
+  \label{fig:baseline} 
+\end{figure}
+
+
 \subparagraph{Tag}
 
 As baselines, quando criadas, conterão todo o repositório Git, incluindo código fonte, diagramas, atas de reunião, etc. e serão numeradas com o seguinte formato, a partir do número 0 (zero):
@@ -1053,6 +1178,15 @@ Ao criar uma nova baseline no GitHub, há opção de colocar notas de release e 
 \end{myprop}
 
 A ordem das categorias de mudanças devem ser obedecidas conforme texto acima. Caso o aplicativo do serviço de refeição venha a ser hospedado na loja de aplicativos da Google, a Play Store, as mesmas notas de release poderão ser usadas ao publicar novas atualizações do aplicativo.
+
+Exemplo:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{softwareengineer/images/releases-notes} 
+  \caption{Notas de release}
+  \label{fig:release-notes} 
+\end{figure}
 
 \subsubsection{Estrutura do Repositório de Versões}
 
@@ -1231,16 +1365,6 @@ O Plano de Gerência de Configuração é alterado nos seguintes casos:
 \item A documentação online do Git tem diversos conteúdos a respeito de controle de versão e gerência de configuração de forma completa, mas didática: \url{http://git-scm.com/doc}
 \item Nos guias online do GitHub tem um guia rápido para aprendizagem da linguagem de marcação Markdown: \url{https://guides.github.com/features/mastering-markdown/}
 \end{itemize}
-
-
-\subsection{Tarefas e papéis}
-
-Descrever as tarefas da gerência de configuração do plano
-definido no item anterior. Descrever também os papéis dos
-responsáveis envolvidos.
-
-Definir os artefatos produzidos pelas tarefas e dar um
-exemplo de artefato.
 
 
 
